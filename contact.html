@@ -19,11 +19,14 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="font-plus">
     <!-- Header -->
-    <div class="relative z-20 text-black">
+    <div class="relative z-20 text-black fade-in">
       <header class="py-4 mx-4 bg-transparent sm:mx-6 lg:mx-20 font-plus">
         <div class="flex items-center justify-between">
           <a href="index.html" class="flex items-center">
@@ -50,13 +53,10 @@
 
             <a
               href="contact.html"
-              class="px-4 py-2 border border-white rounded-xl"
-              style="
-                background: linear-gradient(90deg, #182c77 0%, #6274bb 100%);
-                color: white;
-              "
-              >Liên hệ tư vấn</a
+              class="px-4 py-2 border border-white rounded-xl text-white transition duration-300 bg-gradient-to-r from-[#182c77] to-[#6274bb] hover:from-[#6274bb] hover:to-[#182c77]"
             >
+              Liên hệ tư vấn
+            </a>
           </div>
           <!-- Nút Dashboard để hiển thị thanh Nav -->
           <div class="flex lg:hidden">
@@ -89,7 +89,7 @@
 
     <!-- Liên hệ -->
     <div
-      class="relative bg-center bg-cover font-plus"
+      class="relative bg-center bg-cover font-plus slide-bottom"
       style="background-image: url('./image/contact/bgContact.jpg')"
     >
       <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
@@ -154,9 +154,8 @@
 
           <!-- Gửi yêu cầu -->
           <button
-            class="col-span-2 p-4 text-white transition duration-300 bg-blue-600 rounded-lg sm:col-span-1 hover:bg-blue-700"
+            class="col-span-2 p-4 text-white bg-gradient-to-r from-[#182c77] to-[#6274bb] transition-all duration-300 rounded-lg sm:col-span-1 hover:from-[#6274bb] hover:to-[#182c77] hover:shadow-lg"
             type="submit"
-            style="background: linear-gradient(90deg, #182c77 0%, #6274bb 100%)"
           >
             Gửi yêu cầu tư vấn
           </button>
@@ -171,7 +170,9 @@
     </div>
 
     <!-- thông tin liên hệ -->
-    <div class="max-w-4xl px-4 py-16 mx-auto text-center sm:px-6 lg:px-8">
+    <div
+      class="max-w-4xl px-4 py-16 mx-auto text-center sm:px-6 lg:px-8 slide-bottom"
+    >
       <h2 class="text-lg font-semibold text-[#142a72]">
         Liên hệ ngay với MinhTuan <span class="text-yellow-500">Vinhomes</span>
       </h2>
@@ -213,7 +214,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden">
+    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden fade-in">
       <footer class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
         <div class="flex flex-col justify-between md:flex-row">
           <div class="mb-8 md:mb-0">

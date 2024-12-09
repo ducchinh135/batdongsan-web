@@ -19,12 +19,15 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-----Header ----->
     <div
-      class="relative min-h-screen bg-center bg-cover"
+      class="relative min-h-screen bg-center bg-cover fade-in"
       style="background-image: url('./image/index/bgHeader.png')"
     >
       <div class="background-overlay"></div>
@@ -57,9 +60,10 @@
 
               <a
                 href="contact.html"
-                class="px-4 py-2 text-white border border-white rounded-xl"
-                >Liên hệ tư vấn</a
+                class="px-4 py-2 text-white transition-all duration-300 ease-in-out bg-transparent border border-white shadow-md rounded-xl hover:bg-white hover:text-blue-700 hover:shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
+                Liên hệ tư vấn
+              </a>
             </div>
             <!-- Nút Dashboard để hiển thị thanh Nav -->
             <div class="flex lg:hidden">
@@ -101,23 +105,24 @@
             <div class="flex font-plus">
               <button
                 id="realEstateSaleButton"
-                class="px-2 py-2 mr-2 text-gray-600 bg-white rounded-t-lg sm:px-8 property-button active"
+                class="py-2 mr-2 text-gray-600 transition-transform duration-300 ease-in-out bg-white rounded-t-lg active x-2 sm:px-8 property-button active:scale-95 hover:bg-gray-100 hover:shadow-md"
               >
                 Nhà đất bán
               </button>
               <button
                 id="realEstateRentButton"
-                class="px-2 py-2 mr-2 text-gray-600 bg-white rounded-t-lg sm:px-8 property-button"
+                class="px-2 py-2 mr-2 text-gray-600 transition-transform duration-300 ease-in-out bg-white rounded-t-lg sm:px-8 property-button hover:bg-gray-100 hover:shadow-md active:scale-95"
               >
                 Nhà đất thuê
               </button>
               <button
                 id="projectsButton"
-                class="px-2 py-2 text-gray-600 bg-white rounded-t-lg sm:px-8 property-button"
+                class="px-2 py-2 text-gray-600 transition-transform duration-300 ease-in-out bg-white rounded-t-lg sm:px-8 property-button hover:bg-gray-100 hover:shadow-md active:scale-95"
               >
                 Dự án
               </button>
             </div>
+
             <div
               class="w-full max-w-4xl p-2 bg-white rounded-lg rounded-tl-none shadow-lg sm:p-6"
             >
@@ -159,14 +164,7 @@
                 </div>
                 <button
                   id="searchButton"
-                  class="px-12 py-2 text-white rounded-lg"
-                  style="
-                    background: linear-gradient(
-                      90deg,
-                      #182c77 0%,
-                      #6274bb 100%
-                    );
-                  "
+                  class="px-12 py-2 text-white rounded-lg bg-gradient-to-r from-[#182c77] to-[#6274bb] hover:from-[#6274bb] hover:to-[#182c77] active:scale-95 focus:ring-4 focus:ring-[#6274bb]/50 transition-transform duration-300 ease-in-out"
                 >
                   Tìm kiếm
                 </button>
@@ -225,7 +223,7 @@
     <div
       class="px-4 py-10 mx-auto mt-28 sm:mt-20 md:py-20 sm:px-6 md:container xl:px-20"
     >
-      <div class="flex flex-col items-center lg:flex-row">
+      <div class="flex flex-col items-center lg:flex-row slide-right">
         <div class="lg:w-1/2">
           <h1 class="text-2xl font-bold text-blue-900">MinhTuanVinhomes:</h1>
           <h2 class="flex items-center text-2xl font-bold text-blue-900">
@@ -260,7 +258,7 @@
             Liên hệ tư vấn
           </button>
         </div>
-        <div class="relative mt-6 lg:w-1/2 lg:mt-0 lg:ml-6">
+        <div class="relative mt-6 lg:w-1/2 lg:mt-0 lg:ml-6 slide-left">
           <div class="relative flex justify-center">
             <img
               alt="Person standing in front of a building"
@@ -274,7 +272,7 @@
 
     <!-- Các dự án bất động sản -->
     <div
-      class="relative min-h-screen text-white bg-center bg-cover font-plus lg:bg-left lg:bg-left-top"
+      class="relative min-h-screen text-white bg-center bg-cover font-plus lg:bg-left lg:bg-left-top slide-top"
       style="background-image: url('./image/index/bgQuickSearch.png')"
     >
       <div class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
@@ -289,209 +287,27 @@
             </p>
           </div>
           <button
-            class="flex items-center px-6 py-4 text-gray-900 bg-white rounded-xl"
+            class="flex items-center px-6 py-4 text-gray-900 transition duration-300 ease-in-out transform bg-white rounded-xl hover:bg-gray-100 hover:scale-105 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50"
           >
             Xem tất cả
-            <i class="ml-2 fas fa-arrow-right"> </i>
+            <i class="ml-2 fas fa-arrow-right"></i>
           </button>
         </div>
         <div
           class="flex mb-8 space-x-8 heroSection-project-select pb-4 border-b-[0.5px] border-[#fff] overflow-x-auto md:overflow-visible scroll-smooth whitespace-nowrap"
         >
-          <a class="active" href="#"> Nhà ở </a>
-          <a href="#"> Biệt thự </a>
-          <a href="#"> Căn hộ </a>
-          <a href="#"> Phòng cho thuê </a>
-          <a href="#"> Văn phòng </a>
-          <a href="#"> Khách sạn </a>
-          <a href="#"> Khu đất dự án </a>
+          <a class="active" href="#" data-tab="house">Nhà ở</a>
+          <a href="#" data-tab="villa">Biệt thự</a>
+          <a href="#" data-tab="apartment">Căn hộ</a>
+          <a href="#" data-tab="room">Phòng cho thuê</a>
+          <a href="#" data-tab="office">Văn phòng</a>
+          <a href="#" data-tab="hotel">Khách sạn</a>
+          <a href="#" data-tab="land">Khu đất dự án</a>
         </div>
 
-        <div class="swiper mySwiper-Projects">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="detailProject.html" class="rounded-lg">
-                <div class="relative">
-                  <img
-                    alt="Modern house with large windows and landscaped garden"
-                    class="object-cover w-full h-[440px] rounded-lg"
-                    src="./image/index/imageQS1.png"
-                  />
-                  <div
-                    class="absolute px-4 py-2 text-sm text-white rounded-xl bottom-4 right-4"
-                    style="
-                      background: linear-gradient(
-                        90deg,
-                        #182c77 0%,
-                        #6274bb 100%
-                      );
-                    "
-                  >
-                    Đang cho đặt cọc
-                  </div>
-                </div>
-                <h2 class="mt-4 text-xl font-bold">
-                  Vinhomes Ocean Park 2, ĐD6-91
-                </h2>
-                <div class="flex items-center mt-2">
-                  <img
-                    src="./image/icons/iconLocation.png"
-                    alt="icon"
-                    class="h-6 mr-2"
-                  />
-                  Huyện Đông Anh, Thành Phố Hà Nội
-                </div>
-                <p class="mt-2 text-gray-400 description">
-                  ĐD6-93, Shophouse/Liền kề/Biệt thự để ở, Hoàn thiện cơ bản (có
-                  nội thất), Vinhomes Ocean Park 2
-                </p>
-                <div class="flex items-center mt-4 text-gray-400">
-                  <img
-                    src="./image/icons/iconBed.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  4 người
-                  <div class="w-[0.5px] h-6 bg-white mx-4"></div>
-                  <img
-                    src="./image/icons/iconBath.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  3 tắm
-                  <div class="w-[0.5px] h-6 bg-white mx-4"></div>
-                  <img
-                    src="./image/icons/iconExpand.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  70,00m2
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="detailProject.html" class="rounded-lg">
-                <div class="relative">
-                  <img
-                    alt="Modern house with large windows and landscaped garden"
-                    class="object-cover w-full h-[440px] rounded-lg"
-                    src="./image/index/imageQS1.png"
-                  />
-                  <div
-                    class="absolute px-4 py-2 text-sm text-white rounded-xl bottom-4 right-4"
-                    style="background: #e04444"
-                  >
-                    Sắp mở bán
-                  </div>
-                </div>
-                <h2 class="mt-4 text-xl font-bold">
-                  Vinhomes Ocean Park 2, ĐD6-91
-                </h2>
-                <div class="flex items-center mt-2">
-                  <img
-                    src="./image/icons/iconLocation.png"
-                    alt="icon"
-                    class="h-6 mr-2"
-                  />
-                  Huyện Đông Anh, Thành Phố Hà Nội
-                </div>
-                <p class="mt-2 text-gray-400 description">
-                  ĐD6-93, Shophouse/Liền kề/Biệt thự để ở, Hoàn thiện cơ bản (có
-                  nội thất), Vinhomes Ocean Park 2
-                </p>
-                <div class="flex items-center mt-4 text-gray-400">
-                  <img
-                    src="./image/icons/iconBed.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  4 người
-                  <div class="w-[0.5px] h-6 bg-white mx-4"></div>
-                  <img
-                    src="./image/icons/iconBath.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  3 tắm
-                  <div class="w-[0.5px] h-6 bg-white mx-4"></div>
-                  <img
-                    src="./image/icons/iconExpand.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  70,00m2
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="detailProject.html" class="rounded-lg">
-                <div class="relative">
-                  <img
-                    alt="Modern house with large windows and landscaped garden"
-                    class="object-cover w-full h-[440px] rounded-lg"
-                    src="./image/index/imageQS1.png"
-                  />
-                  <div
-                    class="absolute px-4 py-2 text-sm text-white rounded-xl bottom-4 right-4"
-                    style="
-                      background: linear-gradient(
-                        90deg,
-                        #182c77 0%,
-                        #6274bb 100%
-                      );
-                    "
-                  >
-                    Đang cho đặt cọc
-                  </div>
-                </div>
-                <h2 class="mt-4 text-xl font-bold">
-                  Vinhomes Ocean Park 2, ĐD6-91
-                </h2>
-                <div class="flex items-center mt-2">
-                  <img
-                    src="./image/icons/iconLocation.png"
-                    alt="icon"
-                    class="h-6 mr-2"
-                  />
-                  Huyện Đông Anh, Thành Phố Hà Nội
-                </div>
-                <p class="mt-2 text-gray-400 description">
-                  ĐD6-93, Shophouse/Liền kề/Biệt thự để ở, Hoàn thiện cơ bản (có
-                  nội thất), Vinhomes Ocean Park 2
-                </p>
-                <div class="flex items-center mt-4 text-gray-400">
-                  <img
-                    src="./image/icons/iconBed.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  4 người
-                  <div class="w-[0.5px] h-6 bg-white mx-4"></div>
-                  <img
-                    src="./image/icons/iconBath.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  3 tắm
-                  <div class="w-[0.5px] h-6 bg-white mx-4"></div>
-                  <img
-                    src="./image/icons/iconExpand.png"
-                    alt="icon"
-                    width="24"
-                    class="mr-2"
-                  />
-                  70,00m2
-                </div>
-              </a>
-            </div>
+        <div class="swiper mySwiper mySwiper-Projects">
+          <div class="swiper-wrapper" id="swiper-wrapper-project">
+            <!-- Thẻ swiper sẽ được chèn ở đây -->
           </div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
@@ -501,7 +317,9 @@
 
     <!-- Các dự án trọng điểm -->
     <div class="relative min-h-screen font-plus">
-      <div class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
+      <div
+        class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20 fade-in"
+      >
         <div class="flex items-center justify-between mb-8">
           <div class="w-[60%] md:w-auto">
             <h1 class="text-2xl font-bold md:text-4xl text-[#142A72]">
@@ -513,19 +331,18 @@
             </p>
           </div>
           <button
-            class="flex items-center px-6 py-4 text-white rounded-xl"
-            style="background: linear-gradient(90deg, #182c77 0%, #6274bb 100%)"
+            class="flex items-center px-6 py-4 text-white rounded-xl bg-gradient-to-r from-[#182c77] to-[#6274bb] transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
           >
             Xem tất cả
-            <i class="ml-2 fas fa-arrow-right"> </i>
+            <i class="ml-2 fas fa-arrow-right"></i>
           </button>
         </div>
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <a href="detailProject.html" class="rounded-lg">
-            <div class="relative">
+            <div class="relative overflow-hidden rounded-lg">
               <img
                 alt="Modern house with large windows and landscaped garden"
-                class="object-cover w-full h-[440px] rounded-lg"
+                class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
                 src="./image/index/imageQS1.png"
               />
               <div
@@ -553,10 +370,10 @@
             </p>
           </a>
           <a href="detailProject.html" class="rounded-lg">
-            <div class="relative">
+            <div class="relative overflow-hidden rounded-lg">
               <img
-                alt="Sleek contemporary house with large windows"
-                class="object-cover w-full h-[440px] rounded-lg"
+                alt="Modern house with large windows and landscaped garden"
+                class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
                 src="./image/index/imageQS2.png"
               />
               <div
@@ -584,10 +401,10 @@
             </p>
           </a>
           <a href="detailProject.html" class="rounded-lg">
-            <div class="relative">
+            <div class="relative overflow-hidden rounded-lg">
               <img
-                alt="Modern house with open-concept living space"
-                class="object-cover w-full h-[440px] rounded-lg"
+                alt="Modern house with large windows and landscaped garden"
+                class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
                 src="./image/index/imageQS3.png"
               />
               <div
@@ -655,7 +472,7 @@
 
     <!-- Lý do tìm đến -->
     <div
-      class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20 font-plus"
+      class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20 font-plus slide-bottom"
     >
       <div class="flex flex-col items-center justify-between lg:flex-row">
         <div class="flex flex-col md:flex-row md:space-x-4">
@@ -712,8 +529,7 @@
             </li>
           </ul>
           <button
-            class="px-6 py-2 mt-4 text-white rounded-lg shadow"
-            style="background: linear-gradient(90deg, #182c77 0%, #6274bb 100%)"
+            class="px-6 py-2 mt-4 text-white rounded-lg shadow-lg bg-gradient-to-r from-[#182c77] to-[#6274bb] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#6274bb] hover:to-[#182c77]"
           >
             Giới thiệu về công ty
           </button>
@@ -722,7 +538,7 @@
     </div>
 
     <!-- Tin tức hoạt động  -->
-    <div class="relative min-h-screen font-plus">
+    <div class="relative min-h-screen font-plus fade-in">
       <div class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
         <div class="flex items-center justify-between mb-8">
           <div class="w-[60%] md:w-auto">
@@ -735,186 +551,53 @@
             </p>
           </div>
           <button
-            class="flex items-center px-6 py-4 rounded-xl py-2 bg-[#E2E8F0] text-[#142A72]"
+            class="flex items-center px-6 py-4 rounded-xl bg-[#E2E8F0] text-[#142A72] transition-all duration-300 ease-in-out hover:bg-[#6274bb] hover:text-white hover:scale-105 hover:shadow-lg"
           >
             Xem tất cả
             <i class="ml-2 fas fa-arrow-right"> </i>
           </button>
         </div>
+
+        <!-- Tabs -->
         <div
           class="flex mb-8 space-x-8 heroSection-news-select font-bold pb-4 border-b-[0.5px] border-[#ccc] overflow-x-auto md:overflow-visible scroll-smooth whitespace-nowrap"
         >
-          <a class="active" href="#"> Tất cả bài viết </a>
-          <a href="#"> Dự án triển khai </a>
-          <a href="#"> Phân tích thị trường </a>
-          <a href="#"> Giải pháp tài chính </a>
-          <a href="#"> Bất động sản </a>
+          <a class="tab active" href="#" data-tab="all">Tất cả bài viết</a>
+          <a class="tab" href="#" data-tab="project">Dự án triển khai</a>
+          <a class="tab" href="#" data-tab="market-analysis"
+            >Phân tích thị trường</a
+          >
+          <a class="tab" href="#" data-tab="financial-solutions"
+            >Giải pháp tài chính</a
+          >
+          <a class="tab" href="#" data-tab="real-estate">Bất động sản</a>
         </div>
 
-        <div class="flex-col hidden lg:flex lg:flex-row">
-          <div class="mr-6 overflow-hidden">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-full rounded-lg h-96"
-              src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-            />
-            <div class="pt-2">
-              <h2 class="mb-2 text-2xl font-bold">
-                Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
-                bất động sản từ trực tuyến đến
-              </h2>
-              <p class="mb-4 text-gray-600">
-                A spacious and modern home with an open floor plan, large
-                windows, and a beautifully landscaped garden. Perfect for those
-                seeking peace and tranquility.
-              </p>
-              <div class="flex items-center">
-                <img
-                  alt="Author's profile picture"
-                  class="w-10 h-10 mr-4 rounded-full"
-                  height="100"
-                  src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                  width="100"
-                />
-                <div class="text-sm">
-                  <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                </div>
-              </div>
-            </div>
+        <!-- Tab content -->
+        <div class="tab-content">
+          <div id="all" class="tab-pane active">
+            <!-- Nội dung cho tab "Tất cả bài viết" -->
+            <div id="tab-all-content"></div>
           </div>
-          <div class="flex flex-col space-y-4">
-            <div class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
-              <div class="pl-4 w-[90%]">
-                <h3 class="mb-2 text-lg font-bold description-news">
-                  Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
-                  dịch bất động sản từ trực...
-                </h3>
-                <div class="flex items-center">
-                  <img
-                    alt="Author's profile picture"
-                    class="w-8 h-8 mr-2 rounded-full"
-                    height="100"
-                    src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                    width="100"
-                  />
-                  <div class="text-sm">
-                    <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
-              <div class="pl-4 w-[90%]">
-                <h3 class="mb-2 text-lg font-bold description-news">
-                  Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
-                  dịch bất động sản từ trực...
-                </h3>
-                <div class="flex items-center">
-                  <img
-                    alt="Author's profile picture"
-                    class="w-8 h-8 mr-2 rounded-full"
-                    height="100"
-                    src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                    width="100"
-                  />
-                  <div class="text-sm">
-                    <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
-              <div class="pl-4 w-[90%]">
-                <h3 class="mb-2 text-lg font-bold description-news">
-                  Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
-                  dịch bất động sản từ trực...
-                </h3>
-                <div class="flex items-center">
-                  <img
-                    alt="Author's profile picture"
-                    class="w-8 h-8 mr-2 rounded-full"
-                    height="100"
-                    src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                    width="100"
-                  />
-                  <div class="text-sm">
-                    <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+          <div id="project" class="hidden tab-pane">
+            <!-- Nội dung cho tab "Dự án triển khai" -->
+            <div id="tab-project-content"></div>
           </div>
-        </div>
 
-        <div
-          class="grid grid-cols-1 space-y-4 sm:grid-cols-2 lg:hidden sm:space-y-0"
-        >
-          <div class="mr-6 overflow-hidden">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-full rounded-lg h-44"
-              src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-            />
-            <div class="pt-2">
-              <h2 class="mb-2 text-2xl font-bold description-news">
-                Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
-                bất động sản từ trực tuyến đến
-              </h2>
-
-              <div class="flex items-center">
-                <img
-                  alt="Author's profile picture"
-                  class="w-10 h-10 mr-4 rounded-full"
-                  height="100"
-                  src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                  width="100"
-                />
-                <div class="text-sm">
-                  <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                </div>
-              </div>
-            </div>
+          <div id="market-analysis" class="hidden tab-pane">
+            <!-- Nội dung cho tab "Phân tích thị trường" -->
+            <div id="tab-market-analysis-content"></div>
           </div>
-          <div class="mr-6 overflow-hidden">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-full rounded-lg h-44"
-              src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-            />
-            <div class="pt-2">
-              <h2 class="mb-2 text-2xl font-bold description-news">
-                Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
-                bất động sản từ trực tuyến đến
-              </h2>
 
-              <div class="flex items-center">
-                <img
-                  alt="Author's profile picture"
-                  class="w-10 h-10 mr-4 rounded-full"
-                  height="100"
-                  src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                  width="100"
-                />
-                <div class="text-sm">
-                  <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                </div>
-              </div>
-            </div>
+          <div id="financial-solutions" class="hidden tab-pane">
+            <!-- Nội dung cho tab "Giải pháp tài chính" -->
+            <div id="tab-financial-solutions-content"></div>
+          </div>
+
+          <div id="real-estate" class="hidden tab-pane">
+            <!-- Nội dung cho tab "Bất động sản" -->
+            <div id="tab-real-estate-content"></div>
           </div>
         </div>
       </div>
@@ -922,7 +605,7 @@
 
     <!-- Liên hệ -->
     <div
-      class="relative bg-center bg-cover font-plus"
+      class="relative bg-center bg-cover font-plus slide-top"
       style="background-image: url('./image/index/imageQS2.png')"
     >
       <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
@@ -969,7 +652,7 @@
             ></textarea>
           </div>
           <button
-            class="w-full p-4 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700"
+            class="w-full p-4 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105 hover:shadow-lg"
             type="submit"
             style="background: linear-gradient(90deg, #182c77 0%, #6274bb 100%)"
           >
@@ -980,7 +663,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden">
+    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden fade-in">
       <footer class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
         <div class="flex flex-col justify-between md:flex-row">
           <div class="mb-8 md:mb-0">

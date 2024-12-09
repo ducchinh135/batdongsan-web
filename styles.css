@@ -10,6 +10,10 @@
   font-family: "Inter", sans-serif; /* Dùng font Inter */
 }
 
+body {
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -211,41 +215,97 @@ html {
   transition: width 0.3s ease-in-out;
 }
 
+/* Reset mặc định */
+.news-select a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+.news-select .active {
+  color: #142a72;
+}
+
+.news-select .active::after,
+.news-select a:hover::after {
+  width: 100%;
+}
+
+.news-select a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -16px;
+  width: 0;
+  height: 1.5px;
+  background-color: #142a72;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Reset mặc định */
+.heroSection-location-select a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+.heroSection-location-select .active {
+  color: #142a72;
+}
+
+.heroSection-location-select .active::after,
+.heroSection-location-select a:hover::after {
+  width: 100%;
+}
+
+.heroSection-location-select a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -16px;
+  width: 0;
+  height: 1.5px;
+  background-color: #142a72;
+  transition: width 0.3s ease-in-out;
+}
+
 .buttonActive {
   background: linear-gradient(90deg, #182c77 0%, #6274bb 100%);
   color: white;
 }
 
-.mySwiper {
+.mySwiper-image {
   width: 100%; /* Giới hạn chiều rộng */
   max-width: 800px; /* Tùy chọn: giới hạn chiều rộng tối đa */
   height: 400px; /* Điều chỉnh chiều cao */
 }
 /* Media query cho màn hình nhỏ */
 @media (max-width: 768px) {
-  .mySwiper {
+  .mySwiper-image {
     height: 330px; /* Chiều cao cho màn hình nhỏ hơn */
   }
 }
 
 @media (max-width: 480px) {
-  .mySwiper {
+  .mySwiper-image {
     height: 230px; /* Chiều cao cho màn hình rất nhỏ */
   }
 }
-.mySwiper .swiper-slide {
+.mySwiper-image .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.mySwiper .swiper-slide img {
+.mySwiper-image .swiper-slide img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
 
-.mySwiper .swiper-button-prev::after,
-.mySwiper .swiper-button-next::after {
+.mySwiper-image .swiper-button-prev::after,
+.mySwiper-image .swiper-button-next::after {
   font-size: 20px;
   font-weight: bold;
 }
@@ -321,4 +381,22 @@ html {
     rgba(186, 130, 58, 0.2) 0%,
     rgba(233, 168, 34, 0.2) 100%
   );
+}
+
+#tab-content {
+  display: block;
+}
+
+/* Styling for the tab content */
+.tab-content-news {
+  display: none;
+}
+
+.tab-content-news.active {
+  display: block;
+}
+
+/* Styling for the active tab */
+.tab-link.active {
+  color: #182c77; /* Active tab color */
 }

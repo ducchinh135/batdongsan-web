@@ -14,11 +14,14 @@
       rel="stylesheet"
     />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- Header -->
-    <div class="relative z-20 text-black">
+    <div class="relative z-20 text-black fade-in">
       <header class="py-4 mx-4 bg-transparent sm:mx-6 lg:mx-20 font-plus">
         <div class="flex items-center justify-between">
           <a href="index.html" class="flex items-center">
@@ -45,13 +48,10 @@
 
             <a
               href="contact.html"
-              class="px-4 py-2 border border-white rounded-xl"
-              style="
-                background: linear-gradient(90deg, #182c77 0%, #6274bb 100%);
-                color: white;
-              "
-              >Liên hệ tư vấn</a
+              class="px-4 py-2 border border-white rounded-xl text-white transition duration-300 bg-gradient-to-r from-[#182c77] to-[#6274bb] hover:from-[#6274bb] hover:to-[#182c77]"
             >
+              Liên hệ tư vấn
+            </a>
           </div>
           <!-- Nút Dashboard để hiển thị thanh Nav -->
           <div class="flex lg:hidden">
@@ -84,7 +84,7 @@
 
     <!-- Bộ lọc tìm kiếm -->
     <div
-      class="flex flex-col md:flex-row items-center p-4 mx-4 bg-[#E2E8F0] rounded-xl shadow-md sm:mx-6 lg:mx-20 font-plus justify-between"
+      class="slide-top flex flex-col md:flex-row items-center p-4 mx-4 bg-[#E2E8F0] rounded-xl shadow-md sm:mx-6 lg:mx-20 font-plus justify-between"
     >
       <div class="w-full md:w-[30%]">
         <input
@@ -132,7 +132,7 @@
     </div>
 
     <!-- Danh sách dự án -->
-    <div class="py-4 mx-4 sm:mx-6 lg:mx-20 font-plus">
+    <div class="py-4 mx-4 sm:mx-6 lg:mx-20 font-plus slide-top">
       <div class="flex flex-col justify-between mt-4 sm:flex-row">
         <div class="flex items-center">
           <p>Số dự án hiển thị:</p>
@@ -150,10 +150,10 @@
 
       <div class="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
         <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
+          <div class="relative overflow-hidden rounded-lg">
             <img
               alt="Modern house with large windows and landscaped garden"
-              class="object-cover w-full h-[340px] rounded-lg"
+              class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
               src="./image/index/imageQS1.png"
             />
             <div
@@ -183,10 +183,10 @@
           </p>
         </a>
         <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
+          <div class="relative overflow-hidden rounded-lg">
             <img
-              alt="Sleek contemporary house with large windows"
-              class="object-cover w-full h-[340px] rounded-lg"
+              alt="Modern house with large windows and landscaped garden"
+              class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
               src="./image/index/imageQS2.png"
             />
             <div
@@ -216,10 +216,10 @@
           </p>
         </a>
         <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
+          <div class="relative overflow-hidden rounded-lg">
             <img
-              alt="Modern house with open-concept living space"
-              class="object-cover w-full h-[340px] rounded-lg"
+              alt="Modern house with large windows and landscaped garden"
+              class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
               src="./image/index/imageQS3.png"
             />
             <div
@@ -249,11 +249,11 @@
           </p>
         </a>
         <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
+          <div class="relative overflow-hidden rounded-lg">
             <img
               alt="Modern house with large windows and landscaped garden"
-              class="object-cover w-full h-[340px] rounded-lg"
-              src="./image/index/imageQS1.png"
+              class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
+              src="./image/index/imageQS2.png"
             />
             <div
               class="absolute text-white bg-[#239A3D] py-2 px-4 rounded-xl mt-4 w-fit bottom-4 right-4"
@@ -282,11 +282,11 @@
           </p>
         </a>
         <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
+          <div class="relative overflow-hidden rounded-lg">
             <img
-              alt="Sleek contemporary house with large windows"
-              class="object-cover w-full h-[340px] rounded-lg"
-              src="./image/index/imageQS2.png"
+              alt="Modern house with large windows and landscaped garden"
+              class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
+              src="./image/index/imageQS1.png"
             />
             <div
               class="absolute text-white bg-[#E04444] py-2 px-4 rounded-xl mt-4 w-fit bottom-4 right-4"
@@ -315,10 +315,10 @@
           </p>
         </a>
         <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
+          <div class="relative overflow-hidden rounded-lg">
             <img
-              alt="Modern house with open-concept living space"
-              class="object-cover w-full h-[340px] rounded-lg"
+              alt="Modern house with large windows and landscaped garden"
+              class="object-cover w-full h-[440px] rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
               src="./image/index/imageQS3.png"
             />
             <div
@@ -375,7 +375,7 @@
 
     <!-- Liên hệ -->
     <div
-      class="relative bg-center bg-cover font-plus"
+      class="relative bg-center bg-cover font-plus slide-top"
       style="background-image: url('./image/index/imageQS2.png')"
     >
       <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
@@ -422,7 +422,7 @@
             ></textarea>
           </div>
           <button
-            class="w-full p-4 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700"
+            class="w-full p-4 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105 hover:shadow-lg"
             type="submit"
             style="background: linear-gradient(90deg, #182c77 0%, #6274bb 100%)"
           >
@@ -433,7 +433,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden">
+    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden fade-in">
       <footer class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
         <div class="flex flex-col justify-between md:flex-row">
           <div class="mb-8 md:mb-0">

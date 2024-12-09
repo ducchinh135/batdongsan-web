@@ -14,11 +14,16 @@
       rel="stylesheet"
     />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!-- Header -->
-    <div class="relative z-20 py-4 mx-4 text-black sm:mx-6 lg:mx-20 font-plus">
+    <div
+      class="relative z-20 py-4 mx-4 text-black sm:mx-6 lg:mx-20 font-plus fade-in"
+    >
       <header class="bg-transparent">
         <div class="flex items-center justify-between">
           <a href="index.html" class="flex items-center">
@@ -45,13 +50,10 @@
 
             <a
               href="contact.html"
-              class="px-4 py-2 border border-white rounded-xl"
-              style="
-                background: linear-gradient(90deg, #182c77 0%, #6274bb 100%);
-                color: white;
-              "
-              >Liên hệ tư vấn</a
+              class="px-4 py-2 border border-white rounded-xl text-white transition duration-300 bg-gradient-to-r from-[#182c77] to-[#6274bb] hover:from-[#6274bb] hover:to-[#182c77]"
             >
+              Liên hệ tư vấn
+            </a>
           </div>
           <!-- Nút Dashboard để hiển thị thanh Nav -->
           <div class="flex lg:hidden">
@@ -82,7 +84,7 @@
       <div id="overlay" class="fixed inset-0 hidden bg-black opacity-50"></div>
     </div>
 
-    <div class="py-4 mx-4 my-10 sm:mx-6 lg:mx-20 font-plus">
+    <div class="py-4 mx-4 my-10 sm:mx-6 lg:mx-20 font-plus fade-in">
       <h1 class="text-2xl font-bold md:text-4xl">
         Tin tức bất động sản mới nhất
       </h1>
@@ -97,162 +99,45 @@
       class="flex flex-col justify-between py-4 mx-4 xl:flex-row sm:mx-6 lg:mx-20 font-plus"
     >
       <!-- left -->
-      <div class="w-auto xl:w-[60%]">
+      <div class="w-auto xl:w-[60%] slide-right">
         <div
-          class="flex mb-8 space-x-8 heroSection-news-select font-bold pb-4 border-b-[0.5px] border-[#ccc] overflow-x-auto md:overflow-visible scroll-smooth whitespace-nowrap"
+          class="tab-navigation flex mb-8 space-x-8 heroSection-news-select font-bold pb-4 border-b-[0.5px] border-[#ccc] overflow-x-auto md:overflow-visible scroll-smooth whitespace-nowrap"
         >
-          <a class="active" href="#"> Tất cả bài viết </a>
-          <a href="#"> Dự án triển khai </a>
-          <a href="#"> Phân tích thị trường </a>
-          <a href="#"> Giải pháp tài chính </a>
-          <a href="#"> Bất động sản </a>
+          <a class="tab-link active" href="#" data-tab="all-posts">
+            Tất cả bài viết
+          </a>
+          <a class="tab-link" href="#" data-tab="projects">
+            Dự án triển khai
+          </a>
+          <a class="tab-link" href="#" data-tab="market-analysis">
+            Phân tích thị trường
+          </a>
+          <a class="tab-link" href="#" data-tab="financial-solutions">
+            Giải pháp tài chính
+          </a>
+          <a class="tab-link" href="#" data-tab="real-estate"> Bất động sản </a>
         </div>
 
-        <!-- Dự án nổi bật -->
-        <a href="detailProject.html" class="rounded-lg">
-          <div class="relative">
-            <img
-              alt="Modern house with large windows and landscaped garden"
-              class="object-cover w-full h-[340px] rounded-lg"
-              src="./image/news/bgNews.png"
-            />
-            <div
-              class="absolute text-sm text-white bg-[#239A3D] py-2 px-4 rounded-xl mt-4 w-fit bottom-4 right-4"
-            >
-              Đang mở bánQ1/2024: Sắp bán khu căn hộ
-            </div>
-          </div>
-
-          <h2 class="mt-4 text-xl font-bold">Vinhomes Global Gate</h2>
-          <div
-            class="flex flex-col justify-between sm:items-center sm:flex-row"
-          >
-            <div class="flex items-center mt-2 text-[#142A72] font-bold">
-              <img
-                src="./image/icons/iconLocationBlack.png"
-                alt="icon"
-                class="h-6 mr-2"
-              />
-              Huyện Đông Anh, Thành Phố Hà Nội
-            </div>
-            <div class="flex items-center mt-2 font-bold">
-              <p class="mr-2">Tổng diện tích:</p>
-              <p class="text-[#142A72]">385 ha</p>
-            </div>
-          </div>
-          <p class="mt-2 text-gray-400 description">
-            Vinhomes Global Gate là một Thành phố Thương mại Quốc tế sôi động và
-            đẳng cấp Thế giới, sở hữu 5 thế mạnh tuyệt đối: siêu kết nối, phong
-            cách sống toàn cầu
-          </p>
-        </a>
-
-        <!-- List tin tuc du an -->
-        <div class="flex flex-col mt-4 space-y-4">
-          <a href="#" class="flex flex-col overflow-hidden md:flex-row">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-auto md:w-[50%] rounded-lg h-44"
-              src="./image/news/bgNews.png"
-            />
-            <div class="pl-0 md:pl-4 w-auto md:w-[90%] mt-2 md:mt-0">
-              <h3 class="mb-2 text-lg font-bold description-news">
-                Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
-                bất động sản từ trực...
-              </h3>
-              <p class="mt-2 text-gray-400 description">
-                Vinhomes Global Gate là một Thành phố Thương mại Quốc tế sôi
-                động và đẳng cấp Thế giới, sở hữu 5 thế mạnh tuyệt đối: siêu kết
-                nối, phong cách sống toàn cầu, Vinhomes Global Gate là một Thành
-                phố Thương mại Quốc tế sôi động và đẳng cấp Thế giới
-              </p>
-              <div class="flex items-center mt-2">
-                <img
-                  alt="Author's profile picture"
-                  class="w-8 h-8 mr-2 rounded-full"
-                  height="100"
-                  src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                  width="100"
-                />
-                <div class="text-sm">
-                  <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="flex flex-col overflow-hidden md:flex-row">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-auto md:w-[50%] rounded-lg h-44"
-              src="./image/news/bgNews.png"
-            />
-            <div class="pl-0 md:pl-4 w-auto md:w-[90%] mt-2 md:mt-0">
-              <h3 class="mb-2 text-lg font-bold description-news">
-                Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
-                bất động sản từ trực...
-              </h3>
-              <p class="mt-2 text-gray-400 description">
-                Vinhomes Global Gate là một Thành phố Thương mại Quốc tế sôi
-                động và đẳng cấp Thế giới, sở hữu 5 thế mạnh tuyệt đối: siêu kết
-                nối, phong cách sống toàn cầu, Vinhomes Global Gate là một Thành
-                phố Thương mại Quốc tế sôi động và đẳng cấp Thế giới
-              </p>
-              <div class="flex items-center mt-2">
-                <img
-                  alt="Author's profile picture"
-                  class="w-8 h-8 mr-2 rounded-full"
-                  height="100"
-                  src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                  width="100"
-                />
-                <div class="text-sm">
-                  <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="flex flex-col overflow-hidden md:flex-row">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-auto md:w-[50%] rounded-lg h-44"
-              src="./image/news/bgNews.png"
-            />
-            <div class="pl-0 md:pl-4 w-auto md:w-[90%] mt-2 md:mt-0">
-              <h3 class="mb-2 text-lg font-bold description-news">
-                Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
-                bất động sản từ trực...
-              </h3>
-              <p class="mt-2 text-gray-400 description">
-                Vinhomes Global Gate là một Thành phố Thương mại Quốc tế sôi
-                động và đẳng cấp Thế giới, sở hữu 5 thế mạnh tuyệt đối: siêu kết
-                nối, phong cách sống toàn cầu, Vinhomes Global Gate là một Thành
-                phố Thương mại Quốc tế sôi động và đẳng cấp Thế giới
-              </p>
-              <div class="flex items-center mt-2">
-                <img
-                  alt="Author's profile picture"
-                  class="w-8 h-8 mr-2 rounded-full"
-                  height="100"
-                  src="https://storage.googleapis.com/a1aa/image/lyRUGiAJOW5eFKcvOqGjuz4EjssvW0hfzMzO5YGISHnFpY3TA.jpg"
-                  width="100"
-                />
-                <div class="text-sm">
-                  <p class="text-gray-600">Minh Tuấn - 20/11/2024</p>
-                </div>
-              </div>
-            </div>
-          </a>
+        <!-- Tab Content Section -->
+        <div id="all-posts" class="tab-content-news active">
+          <!-- Tất cả bài viết content here -->
         </div>
-
-        <div class="flex justify-center">
-          <button class="py-4 px-16 bg-[#F1F5F9] rounded-lg mt-8">
-            Xem thêm
-          </button>
+        <div id="projects" class="tab-content-news">
+          <!-- Dự án triển khai content here -->
+        </div>
+        <div id="market-analysis" class="tab-content-news">
+          <!-- Phân tích thị trường content here -->
+        </div>
+        <div id="financial-solutions" class="tab-content-news">
+          <!-- Giải pháp tài chính content here -->
+        </div>
+        <div id="real-estate" class="tab-content-news">
+          <!-- Bất động sản content here -->
         </div>
       </div>
       <!-- Right -->
       <div
-        class="w-auto flex justify-between xl:justify-start flex-col lg:flex-row xl:flex-col xl:w-[30%] mt-8 xl:mt-0"
+        class="w-auto flex justify-between xl:justify-start flex-col lg:flex-row xl:flex-col xl:w-[30%] mt-8 xl:mt-0 slide-left"
       >
         <div class="w-full p-6 bg-white rounded-lg shadow lg:max-w-md">
           <h2 class="mb-4 text-lg font-medium">Bài viết được xem nhiều nhất</h2>
@@ -263,7 +148,10 @@
               >
                 1
               </div>
-              <a href="#" class="ml-4">
+              <a
+                href="#"
+                class="ml-4 transition duration-300 hover:text-blue-800"
+              >
                 Trọn Bộ Lãi Suất Vay Mua Nhà Mới Nhất Tháng 11/2024
               </a>
             </li>
@@ -273,7 +161,10 @@
               >
                 2
               </div>
-              <a href="#" class="ml-4">
+              <a
+                href="#"
+                class="ml-4 transition duration-300 hover:text-blue-800"
+              >
                 Thị Trường BĐS Tháng 10/2024: Phục Hồi Cả Nhu Cầu Và Lượng Tin
                 Đăng
               </a>
@@ -284,7 +175,10 @@
               >
                 3
               </div>
-              <a href="#" class="ml-4">
+              <a
+                href="#"
+                class="ml-4 transition duration-300 hover:text-blue-800"
+              >
                 Bất Động Sản Đông Anh (Hà Nội) Tiếp Tục Nổi Sóng Mới
               </a>
             </li>
@@ -294,7 +188,9 @@
               >
                 4
               </div>
-              <a href="#" class="ml-4"
+              <a
+                href="#"
+                class="ml-4 transition duration-300 hover:text-blue-800"
                 >Đất Nền Vành Đai 4 “Nổi Sóng” Cuối Năm 2024</a
               >
             </li>
@@ -304,7 +200,10 @@
               >
                 5
               </div>
-              <a href="#" class="ml-4">
+              <a
+                href="#"
+                class="ml-4 transition duration-300 hover:text-blue-800"
+              >
                 Đất Nền Đông Anh (Hà Nội) Tiếp Tục Sốt Nóng “Bỏng Tay”
               </a>
             </li>
@@ -318,75 +217,96 @@
             Thị trường BĐS tại các tỉnh / thành
           </h2>
           <div class="space-y-4">
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
                 alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
                 src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
-                width="60"
               />
-              <span> Hà Nội </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                Hà Nội
+              </span>
             </a>
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
-                alt="Image of Hải Phòng"
+                alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
-                src="https://storage.googleapis.com/a1aa/image/73Lw7UXdw5pgNVU6p1PUKKqRxDEasykfaFjYugBJoxxegC4TA.jpg"
-                width="60"
+                src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
               />
-              <span> Hải Phòng </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                Hải Phòng
+              </span>
             </a>
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
-                alt="Image of Đà Nẵng"
+                alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
-                src="https://storage.googleapis.com/a1aa/image/K09e4nqkVW39KqZTce7ZaWUWbvYGF77fszeOqVaQ6lDAEKgPB.jpg"
-                width="60"
+                src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
               />
-              <span> Đà Nẵng </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                Đà Nẵng
+              </span>
             </a>
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
-                alt="Image of TP. Hồ Chí Minh"
+                alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
-                src="https://storage.googleapis.com/a1aa/image/E4Afunxn6PV1RSHXSGRd3fITYJGcDEIkqQvnK11vr3fJCFwnA.jpg"
-                width="60"
+                src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
               />
-              <span> TP. Hồ Chí Minh </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                TP. Hồ Chí Minh
+              </span>
             </a>
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
-                alt="Image of Bà Rịa - Vũng Tàu"
+                alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
-                src="https://storage.googleapis.com/a1aa/image/0e0eJUS1lbh500bqwezuZ9XDWmtlmRnDAkE9ng7OP5MCCFwnA.jpg"
-                width="60"
+                src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
               />
-              <span> Bà Rịa - Vũng Tàu </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                Bà Rịa - Vũng Tàu
+              </span>
             </a>
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
-                alt="Image of Huế"
+                alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
-                src="https://storage.googleapis.com/a1aa/image/3wwC0uRIexQ1AiCVPhbWO0KbDnkoWIstjQg8xzQQqTWhQB8JA.jpg"
-                width="60"
+                src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
               />
-              <span> Huế </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                Huế
+              </span>
             </a>
-            <a href="#" class="flex items-center space-x-4 w-fit">
+            <a
+              href="#"
+              class="flex items-center space-x-4 transition-transform duration-300 hover:scale-105 hover:bg-gray-100 hover:rounded-lg"
+            >
               <img
-                alt="Image of Hưng Yên"
+                alt="Image of Hà Nội"
                 class="object-cover w-16 h-10 rounded-lg"
-                height="40"
-                src="https://storage.googleapis.com/a1aa/image/BP2iGTFuooIBLVACeCwmf8vRgRTfeIMpJn0aaHhBjez1IUAfE.jpg"
-                width="60"
+                src="https://storage.googleapis.com/a1aa/image/MJxVtbebl1xe6U9a2n6oXQsZwPlGlE6n2KVfLfZxg7w9DKgPB.jpg"
               />
-              <span> Hưng Yên </span>
+              <span class="transition duration-300 hover:text-blue-800">
+                Hưng Yên
+              </span>
             </a>
           </div>
         </div>
@@ -394,7 +314,9 @@
     </div>
 
     <!-- Được quan tâm nhiều nhất -->
-    <div class="relative py-4 mx-4 lg:min-h-screen font-plus sm:mx-6 lg:mx-20">
+    <div
+      class="relative py-4 mx-4 lg:min-h-screen font-plus sm:mx-6 lg:mx-20 slide-top"
+    >
       <div class="mt-10">
         <div class="flex items-center justify-between mb-8">
           <div class="w-[60%] md:w-auto">
@@ -404,20 +326,24 @@
           </div>
           <a
             href="#"
-            class="flex items-center font-bold rounded-full text-[#142A72]"
+            class="flex items-center font-bold rounded-full text-[#142A72] hover:text-blue-500 transition duration-300"
           >
             <p class="underline">Xem thêm</p>
-            <i class="ml-2 fas fa-chevron-right"></i>
+            <i
+              class="ml-2 transition-transform duration-300 fas fa-chevron-right hover:translate-x-1"
+            ></i>
           </a>
         </div>
 
         <div class="flex-col hidden lg:flex lg:flex-row">
           <a href="#" class="mr-6 overflow-hidden">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-full rounded-lg h-96"
-              src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-            />
+            <div class="relative overflow-hidden rounded-lg">
+              <img
+                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-96 hover:scale-105"
+                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+              />
+            </div>
             <div class="pt-2">
               <h2 class="mb-2 text-2xl font-bold">
                 Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
@@ -444,11 +370,13 @@
           </a>
           <div class="flex flex-col space-y-4">
             <a href="#" class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
+              <div class="relative w-full overflow-hidden rounded-lg">
+                <img
+                  alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                  class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-44 hover:scale-105"
+                  src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+                />
+              </div>
               <div class="pl-4 w-[90%]">
                 <h3 class="mb-2 text-lg font-bold description-news">
                   Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
@@ -469,11 +397,13 @@
               </div>
             </a>
             <a href="#" class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
+              <div class="relative w-full overflow-hidden rounded-lg">
+                <img
+                  alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                  class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-44 hover:scale-105"
+                  src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+                />
+              </div>
               <div class="pl-4 w-[90%]">
                 <h3 class="mb-2 text-lg font-bold description-news">
                   Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
@@ -494,11 +424,13 @@
               </div>
             </a>
             <a href="#" class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
+              <div class="relative w-full overflow-hidden rounded-lg">
+                <img
+                  alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                  class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-44 hover:scale-105"
+                  src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+                />
+              </div>
               <div class="pl-4 w-[90%]">
                 <h3 class="mb-2 text-lg font-bold description-news">
                   Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
@@ -581,7 +513,9 @@
     </div>
 
     <!-- Cuộc sống tại vinhomes -->
-    <div class="relative py-4 mx-4 lg:min-h-screen font-plus sm:mx-6 lg:mx-20">
+    <div
+      class="relative py-4 mx-4 lg:min-h-screen font-plus sm:mx-6 lg:mx-20 slide-top"
+    >
       <div class="mt-10">
         <div class="flex items-center justify-between mb-8">
           <div class="w-[60%] md:w-auto">
@@ -600,11 +534,13 @@
 
         <div class="flex-col hidden lg:flex lg:flex-row">
           <a href="#" class="mr-6 overflow-hidden">
-            <img
-              alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-              class="object-cover w-full rounded-lg h-96"
-              src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-            />
+            <div class="relative overflow-hidden rounded-lg">
+              <img
+                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-96 hover:scale-105"
+                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+              />
+            </div>
             <div class="pt-2">
               <h2 class="mb-2 text-2xl font-bold">
                 Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao dịch
@@ -631,11 +567,13 @@
           </a>
           <div class="flex flex-col space-y-4">
             <a href="#" class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
+              <div class="relative w-full overflow-hidden rounded-lg">
+                <img
+                  alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                  class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-44 hover:scale-105"
+                  src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+                />
+              </div>
               <div class="pl-4 w-[90%]">
                 <h3 class="mb-2 text-lg font-bold description-news">
                   Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
@@ -656,11 +594,13 @@
               </div>
             </a>
             <a href="#" class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
+              <div class="relative w-full overflow-hidden rounded-lg">
+                <img
+                  alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                  class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-44 hover:scale-105"
+                  src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+                />
+              </div>
               <div class="pl-4 w-[90%]">
                 <h3 class="mb-2 text-lg font-bold description-news">
                   Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
@@ -681,11 +621,13 @@
               </div>
             </a>
             <a href="#" class="flex overflow-hidden">
-              <img
-                alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
-                class="object-cover w-full rounded-lg h-44"
-                src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
-              />
+              <div class="relative w-full overflow-hidden rounded-lg">
+                <img
+                  alt="A spacious and modern home with an open floor plan, large windows, and a beautifully landscaped garden."
+                  class="object-cover w-full transition-all duration-300 ease-in-out transform rounded-lg h-44 hover:scale-105"
+                  src="https://storage.googleapis.com/a1aa/image/rrAJYKuOgBrAMtxI692ZkUDveurAM0aG86f5eJEl9oFJSxunA.jpg"
+                />
+              </div>
               <div class="pl-4 w-[90%]">
                 <h3 class="mb-2 text-lg font-bold description-news">
                   Vinhomes chính thức ra mắt Vinhomes Market - Giải pháp giao
@@ -769,7 +711,7 @@
 
     <!-- Liên hệ -->
     <div
-      class="relative mt-10 bg-center bg-cover font-plus"
+      class="relative bg-center bg-cover font-plus slide-top"
       style="background-image: url('./image/index/imageQS2.png')"
     >
       <div class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
@@ -816,7 +758,7 @@
             ></textarea>
           </div>
           <button
-            class="w-full p-4 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700"
+            class="w-full p-4 text-white transition duration-300 bg-blue-600 rounded-lg hover:bg-blue-700 hover:scale-105 hover:shadow-lg"
             type="submit"
             style="background: linear-gradient(90deg, #182c77 0%, #6274bb 100%)"
           >
@@ -827,7 +769,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden">
+    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden fade-in">
       <footer class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
         <div class="flex flex-col justify-between md:flex-row">
           <div class="mb-8 md:mb-0">
