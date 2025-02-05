@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MinhTuanVinhomes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Tăng kích thước ảnh ở giữa */
+      .swiper-slide-active img {
+        transform: scale(1.2); /* Ảnh giữa to hơn */
+        transition: transform 0.5s ease-in-out;
+      }
+
+      @media (max-width: 480px) {
+        .swiper {
+          width: 100%; /* Giúp slider chiếm hết chiều rộng màn hình */
+        }
+        .swiper-slide img {
+          transform: scale(3);
+        }
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        color: white; /* Giữ màu trắng cho icon mũi tên */
+        z-index: 10;
+      }
+
+      .swiper-button-next::before,
+      .swiper-button-prev::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: black;
+        opacity: 0.5; /* Chỉ làm mờ màu nền */
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      .swiper-button-prev::after,
+      .swiper-button-next::after {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .list-tab-button .active {
+        background: #00b3e3 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="relative z-20 text-black fade-in">
+      <header class="py-4 mx-4 bg-transparent sm:mx-6 lg:mx-20 font-plus">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="flex items-center">
+            <img
+              alt="Logo"
+              class="mr-2"
+              height="32"
+              src="./image/icons/iconLogo.png"
+              width="30"
+            />
+            <span class="text-lg font-bold"> MinhTuanVinhomes </span>
+          </a>
+          <div
+            class="items-center hidden space-x-2 font-bold lg:flex md:property-button lg:space-x-6 xl:space-x-16"
+          >
+            <nav
+              class="flex space-x-2 lg:space-x-6 xl:space-x-16 nav-projectpage"
+            >
+              <a href="index.html" class="active">Trang chủ</a>
+              <a href="#">Giới thiệu</a>
+              <a href="list-project.html">Danh sách dự án</a>
+              <a href="news.html">Vinhomes</a>
+            </nav>
+
+            <a
+              href="contact.html"
+              class="px-4 py-2 border border-white rounded-xl text-white transition duration-300 bg-gradient-to-r from-[#182c77] to-[#6274bb] hover:from-[#6274bb] hover:to-[#182c77]"
+            >
+              Liên hệ tư vấn
+            </a>
+          </div>
+          <!-- Nút Dashboard để hiển thị thanh Nav -->
+          <div class="flex lg:hidden">
+            <button id="dashboardButton" class="text-black">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Thanh Nav dọc (ẩn trên màn nhỏ) -->
+      <div
+        id="sideNav"
+        class="fixed top-0 right-0 w-64 h-full transition-transform duration-300 transform translate-x-full"
+      >
+        <div class="p-6">
+          <ul class="flex flex-col space-y-4">
+            <a href="#" class="active">Trang chủ</a>
+            <a href="#">Giới thiệu</a>
+            <a href="#">Danh sách dự án</a>
+            <a href="#">Vinhomes</a>
+            <a href="#">Liên hệ tư vấn</a>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mờ vùng ngoài khi thanh Nav dọc mở -->
+      <div id="overlay" class="fixed inset-0 hidden bg-black opacity-50"></div>
+    </div>
+
+    <div class="relative text-[#444444] slide-right">
+      <img
+        src="./image/detail/11824-11.jpg"
+        alt="Aerial view of Vinhomes Global Gate"
+        class="w-full h-[440px] object-cover"
+      />
+
+      <div
+        class="absolute inset-0 items-center justify-center left-[-29%] hidden md:flex"
+      >
+        <div class="max-w-lg p-8 bg-white shadow-lg">
+          <h1 class="mb-4 text-3xl font-semibold text-center">
+            VINHOMES GLOBAL GATE
+          </h1>
+          <p class="mb-4 text-sm">
+            Vinhomes Global Gate hay còn gọi là
+            <strong>Vinhomes Cổ Loa</strong> là khu đô thị mới rộng 385 ha, nằm
+            tại huyện Đông Anh, Hà Nội, do tập đoàn Vingroup làm chủ đầu tư. Sở
+            hữu vị trí “siêu kết nối” chỉ mất 5 – 10 phút để di chuyển vào trung
+            tâm thủ đô, kết hợp mô hình “đô thị EXPO” lần đầu xuất hiện tại Việt
+            Nam, Vinhomes Global Gate Cổ Loa Đông Anh được định vị sẽ trở thành
+            phố giao thương quốc tế cũng như trung tâm tài chính mới của cả đất
+            nước. Các sản phẩm biệt thự, liền kề, căn hộ hạng sang tại đây tiếp
+            tục mở ra cơ hội an cư lạc nghiệp cũng như là kênh đầu tư giá trị
+            bền vững cho những chủ nhân tinh hoa trên khắp toàn cầu.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center md:hidden">
+        <div class="max-w-lg p-8 bg-white">
+          <h1 class="mb-4 text-3xl font-semibold text-center">
+            VINHOMES GLOBAL GATE
+          </h1>
+          <p class="mb-4 text-sm">
+            Vinhomes Global Gate hay còn gọi là
+            <strong>Vinhomes Cổ Loa</strong> là khu đô thị mới rộng 385 ha, nằm
+            tại huyện Đông Anh, Hà Nội, do tập đoàn Vingroup làm chủ đầu tư. Sở
+            hữu vị trí “siêu kết nối” chỉ mất 5 – 10 phút để di chuyển vào trung
+            tâm thủ đô, kết hợp mô hình “đô thị EXPO” lần đầu xuất hiện tại Việt
+            Nam, Vinhomes Global Gate Cổ Loa Đông Anh được định vị sẽ trở thành
+            phố giao thương quốc tế cũng như trung tâm tài chính mới của cả đất
+            nước. Các sản phẩm biệt thự, liền kề, căn hộ hạng sang tại đây tiếp
+            tục mở ra cơ hội an cư lạc nghiệp cũng như là kênh đầu tư giá trị
+            bền vững cho những chủ nhân tinh hoa trên khắp toàn cầu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-center p-8 md:flex-row slide-left"
+      style="background: linear-gradient(270deg, #236093 0%, #345574 100%)"
+    >
+      <div class="max-w-lg p-8 text-white border border-white">
+        <h1 class="px-12 mb-4 text-xl font-bold text-center">
+          CHÍNH THỨC MỞ BÁN VINHOMES GLOBAL GATE
+        </h1>
+        <ul class="pl-2 space-y-2 text-sm">
+          <li>Phân khu mở bán: Tinh Hoa, Thịnh Vượng, Cát Tường</li>
+          <li>Biệt thự đơn lập: DT 212.5 – 380 m2, giá bán từ 100 – 200 tỷ</li>
+          <li>Biệt thự song lập: DT 125.6 – 153 m2, giá bán từ 50 – 62 tỷ</li>
+          <li>Biệt thự tạm lập: DT 127.5 m2, giá bán từ 40 – 42 tỷ</li>
+          <li>Biệt thự tứ lập: DT 127.5 m2, giá bán từ 40 – 42 tỷ</li>
+          <li>Liền kề (Nhà phố): DT 62.5 – 100 m2, giá bán từ 17 – 36 tỷ</li>
+          <li>Hỗ trợ vay vốn 70% LS 0% trong vòng từ 18 – 36 tháng</li>
+          <li>Chiết khấu 8% + LS 11%/năm nếu khách hàng thanh toán sớm 100%</li>
+          <li>Chiết khấu 03 – 0.5% dành cho khách hàng tham gia VinClub</li>
+          <li>Chiết khấu 12% dành cho khách hàng đến về ở sớm</li>
+          <li>
+            Cam kết tiền thuê 6%/năm trong vòng 3 năm nếu khách hàng ủy thác CDT
+          </li>
+          <li>
+            Tặng lộc vàng may mắn lên tới 25 chỉ vàng, tương đương 200 Triệu
+          </li>
+          <li>Tặng gói đào tạo học viện ngựa trị giá 50 Triệu</li>
+          <li>Miễn phí dịch vụ 24 tháng</li>
+        </ul>
+      </div>
+      <div class="flex items-center justify-center mt-8 md:mt-0 md:ml-8">
+        <img
+          src="./image/detail/vinhomes-global-gate-banner.jpg"
+          alt="Aerial view of Vinhomes Global Gate with buildings, roads, and water bodies"
+          class="object-cover border-8 border-white rounded-full w-[400px] h-[400px]"
+        />
+      </div>
+    </div>
+
+    <div
+      class="relative min-h-[400px] bg-center bg-cover py-10 fade-in"
+      style="
+        background-image: url('./image/detail/vinhomes-ocean-park-background.jpg');
+      "
+    >
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div
+        class="relative z-10 flex flex-col items-center justify-center px-4 min-h-[400px]"
+      >
+        <h1 class="mb-6 text-2xl font-bold text-white">
+          ĐĂNG KÝ TƯ VẤN CHUYÊN SÂU DỰ ÁN
+        </h1>
+        <div>
+          <form class="w-full max-w-4xl">
+            <div class="flex flex-wrap mb-4 -mx-2">
+              <div class="w-full px-2 mb-4 md:w-1/4 md:mb-0">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="text"
+                  placeholder="Họ và tên*"
+                />
+              </div>
+              <div class="w-full px-2 mb-4 md:w-1/4 md:mb-0">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="text"
+                  placeholder="Số điện thoại*"
+                />
+              </div>
+              <div class="w-full px-2 mb-4 md:w-1/4 md:mb-0">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="w-full px-2 md:w-1/4">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="text"
+                  placeholder="Dự án quan tâm"
+                />
+              </div>
+            </div>
+            <div class="mb-4">
+              <textarea
+                class="w-full p-2 border border-gray-300 rounded"
+                rows="6"
+                placeholder="Nhu cầu quan tâm"
+              ></textarea>
+            </div>
+          </form>
+
+          <button class="px-6 py-2 text-white bg-[#345574] rounded">
+            ĐĂNG KÝ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-center p-8 md:flex-row slide-right"
+    >
+      <div class="md:w-[45%] lg:w-[33%]">
+        <!-- Ảnh lớn hiển thị -->
+        <img
+          id="mainImage"
+          src="./image/detail/cate2.jpg"
+          alt="Aerial view of Vinhomes Global Gate Cổ Loa Đông Anh"
+          class="w-full h-auto p-2 mb-4 transition-all duration-300 border md:mb-0"
+        />
+
+        <!-- Danh sách ảnh nhỏ -->
+        <div class="grid grid-cols-4 gap-2">
+          <div class="relative group">
+            <img
+              src="./image/detail/cate2.jpg"
+              data-src="./image/detail/cate2.jpg"
+              alt="Cổ Loa Đông Anh"
+              class="w-full h-auto p-2 transition-all duration-300 border cursor-pointer hover:opacity-80"
+              onmouseover="changeImage(this)"
+            />
+            <span
+              class="absolute px-3 py-1 mb-3 text-[10px] text-white transition-opacity duration-300 -translate-x-1/2 bg-black rounded opacity-0 left-1/2 bottom-full group-hover:opacity-100"
+            >
+              Cổ Loa Đông Anh
+            </span>
+            <span
+              class="absolute w-0 h-0 mb-1 transition-opacity duration-300 -translate-x-1/2 border-t-4 border-l-4 border-r-4 border-transparent opacity-0 left-1/2 bottom-full border-t-black group-hover:opacity-100"
+            ></span>
+          </div>
+
+          <div class="relative group">
+            <img
+              src="./image/detail/cate3.jpg"
+              data-src="./image/detail/cate3.jpg"
+              alt="Vinhomes Grand Park"
+              class="w-full h-auto p-2 transition-all duration-300 border cursor-pointer hover:opacity-80"
+              onmouseover="changeImage(this)"
+            />
+            <span
+              class="absolute px-3 py-1 mb-3 text-[10px] text-white transition-opacity duration-300 -translate-x-1/2 bg-black rounded opacity-0 left-1/2 bottom-full group-hover:opacity-100"
+            >
+              Vinhomes Grand Park
+            </span>
+            <span
+              class="absolute w-0 h-0 mb-1 transition-opacity duration-300 -translate-x-1/2 border-t-4 border-l-4 border-r-4 border-transparent opacity-0 left-1/2 bottom-full border-t-black group-hover:opacity-100"
+            ></span>
+          </div>
+
+          <div class="relative group">
+            <img
+              src="./image/detail/cate4.jpg"
+              data-src="./image/detail/cate4.jpg"
+              alt="Vinhomes Smart City"
+              class="w-full h-auto p-2 transition-all duration-300 border cursor-pointer hover:opacity-80"
+              onmouseover="changeImage(this)"
+            />
+            <span
+              class="absolute px-3 py-1 mb-3 text-[10px] text-white transition-opacity duration-300 -translate-x-1/2 bg-black rounded opacity-0 left-1/2 bottom-full group-hover:opacity-100"
+            >
+              Vinhomes Smart City
+            </span>
+            <span
+              class="absolute w-0 h-0 mb-1 transition-opacity duration-300 -translate-x-1/2 border-t-4 border-l-4 border-r-4 border-transparent opacity-0 left-1/2 bottom-full border-t-black group-hover:opacity-100"
+            ></span>
+          </div>
+
+          <div class="relative group">
+            <img
+              src="./image/detail/cate5.jpg"
+              data-src="./image/detail/cate5.jpg"
+              alt="Vinhomes Ocean Park"
+              class="w-full h-auto p-2 transition-all duration-300 border cursor-pointer hover:opacity-80"
+              onmouseover="changeImage(this)"
+            />
+            <span
+              class="absolute px-3 py-1 mb-3 text-[10px] text-white transition-opacity duration-300 -translate-x-1/2 bg-black rounded opacity-0 left-1/2 bottom-full group-hover:opacity-100"
+            >
+              Vinhomes Ocean Park
+            </span>
+            <span
+              class="absolute w-0 h-0 mb-1 transition-opacity duration-300 -translate-x-1/2 border-t-4 border-l-4 border-r-4 border-transparent opacity-0 left-1/2 bottom-full border-t-black group-hover:opacity-100"
+            ></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:w-[45%] lg:w-[33%] md:pl-10 pt-10 md:pt-0">
+        <h1 class="mb-4 text-2xl font-semibold text-center">
+          TỔNG QUAN DỰ ÁN VINHOMES GLOBAL GATE CỔ LOA ĐÔNG ANH
+        </h1>
+        <div class="space-y-2 text-sm">
+          <p><strong>Chủ đầu tư:</strong> Vingroup</p>
+          <p><strong>Tổng diện tích đất dự án:</strong> 385 ha</p>
+          <p><strong>Mật độ xây dựng:</strong> 28.5%</p>
+          <p>
+            <strong>Quy mô phát triển:</strong> 4 tòa căn hộ, 9 tòa hỗn hợp văn
+            phòng + thương mại & 4.147 căn nhà ở thấp tầng
+          </p>
+          <p><strong>Loại hình phát triển:</strong></p>
+          <ul class="list-disc list-inside">
+            <li>
+              Cao tầng: Studio, 1PN, 1PN+1, 2PN, 2PN+1, 3PN, duplex, penthouse
+            </li>
+            <li>
+              Thấp tầng: Biệt thự đơn lập, biệt thự song lập, biệt thự tam lập,
+              biệt thự tứ lập, liền kề
+            </li>
+          </ul>
+          <p><strong>Thời điểm khởi công:</strong> Quý I/2024</p>
+          <p><strong>Thời điểm bàn giao:</strong> Năm 2025</p>
+          <p><strong>Hình thức sở hữu:</strong> Sổ đỏ lâu dài</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex items-center justify-center text-white slide-left"
+      style="background: linear-gradient(270deg, #236093 0%, #345574)"
+    >
+      <div class="max-w-5xl p-8">
+        <h1 class="mb-4 text-2xl font-semibold text-center">
+          VỊ TRÍ VINHOMES GLOBAL GATE
+        </h1>
+        <div class="text-xs">
+          <p class="mb-4">
+            Vinhomes Global Gate Cổ Loa nằm dọc theo 2 bên đường Trường Sa,
+            thuộc địa phận 2 xã Đông Hội & Xuân Canh, huyện Đông Anh, Hà Nội. Dự
+            án sở hữu vị trí siêu kết nối, vừa nằm trên đường Trường Sa (Quốc lộ
+            5A) – Trục giao thông trọng điểm nối liền 2 khu vực phía Đông & phía
+            Bắc thành phố với sân bay quốc tế Nội Bài và các tỉnh thành Thái
+            Nguyên, Vĩnh Phúc; vừa nằm liền kết trực tiếp với cầu Tứ Liên (Dự
+            kiến năm 2030 hoàn thành), chỉ mất 5 phút để di chuyển vào trung tâm
+            cũ Hà Nội; vừa nằm ôm trọn tuyến metro số 4 (Theo quy hoạch đến năm
+            2030 tầm nhìn 2050) với 2 nhà ga nằm trong lòng dự án.
+          </p>
+          <p class="mb-4">
+            Vinhomes Global Gate còn được hưởng lợi ích từ hạ tầng mạnh mẽ từ
+            quy hoạch đồng bộ hai bên sông Hồng. Trong bán kính 5 km xung quanh
+            Vinhomes Cổ Loa là hàng loạt các công trình đình đám, nổi bật phải
+            kể đến “Thành phố thông minh” rộng 272 ha với tổng vốn đầu tư 4.2 tỷ
+            USD của BRG Group, công viên Kim Quy mô phỏng “Disneyland –
+            California” rộng hơn 100 ha của Sun Group và cả khu đô thị Vinhomes
+            Tân Xá rộng 268 ha của cùng chủ đầu tư Vingroup. Trong tương lai,
+            các đại công trình hoàn thiện sẽ đưa Vinhomes Global Gate không chỉ
+            riêng về Đông Anh nói chung trở thành trung tâm mới của Hà Nội, thay
+            thế dần trung tâm cũ đang ngày càng đông đúc.
+          </p>
+          <p>
+            Vinhomes Global Gate còn được bao bọc bởi 4 dòng sông đã đi vào đời
+            sống văn hóa, tinh thần của người dân Việt: sông Hồng, sông Đuống,
+            sông Ngũ Huyện Khê, sông Hoàng Giang, tạo nên địa thế “Vượng lộc –
+            Đắc tài”, mang đến sinh khí, tài lộc và may mắn như những nét văn
+            hóa tâm linh từ ngàn đời nay. Vinhomes Cổ Loa là dự án hoàn hảo giữa
+            những giá trị lịch sử xưa cũ và nét đẹp hiện đại tương lai, giữa
+            thiên nhiên sống nước và nhịp sống đô thị phồn hoa. Nơi đây xứng tầm
+            trở thành một thành phố giao thương đa trung tâm cỡ quốc tế, nơi
+            khởi mở những giá trị sống đích thực dành cho mọi công dân tinh anh
+            trên khắp toàn cầu.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center border-b fade-in">
+      <img
+        src="./image/detail/vi-tri-vinhomes-global-gate.jpg"
+        alt=""
+        class="w-[80%]"
+      />
+    </div>
+
+    <div class="flex flex-col items-center justify-center mt-8 slide-right">
+      <h1 class="mb-8 text-2xl font-semibold text-center">
+        Mặt bằng tổng thể Vinhomes Global Gate
+      </h1>
+      <img
+        src="./image/detail/mat-bang-tong-the-vinhomes-global-gate.jpg"
+        alt=""
+        class="w-[100%]"
+      />
+    </div>
+
+    <div
+      class="flex items-center justify-center text-white slide-left"
+      style="background: linear-gradient(270deg, #236093 0%, #345574)"
+    >
+      <div class="max-w-5xl px-4 py-12">
+        <h1 class="mb-8 text-2xl font-semibold text-center md:text-3xl">
+          THÀNH PHỐ THƯƠNG MẠI TẦM CỠ QUỐC TẾ
+        </h1>
+        <p class="mb-12 text-sm">
+          Với định hướng xây dựng phát triển trở thành khu đô thị thông minh kết
+          nối toàn cầu, cũng như tâm điểm giao thương của cả vùng đô thị hóa
+          đồng bằng sông Hồng, Vinhomes Global Gate Cổ Loa Đông Anh không chỉ sở
+          hữu vị trí siêu kết nối “có một không hai”, mà hơn thế nữa, nơi đây
+          còn quy tụ những công trình mang tính biểu tượng quốc tế, nổi bật
+          trong số đó phải kể đến:
+        </p>
+        <div class="grid grid-cols-1 gap-8 text-sm md:grid-cols-3">
+          <div class="">
+            <img
+              src="./image/detail/cate1.jpg"
+              alt="Trung tâm hội chợ triển lãm quốc gia"
+              class="mx-auto mb-4 border-4 border-white"
+            />
+            <span>
+              <h2 class="inline font-bold">Khách sạn 5 sao JW Marriott</h2>
+              <p class="inline">
+                – Điểm đến sang trọng dành cho giới thương lưu, doanh nhân và du
+                khách quốc tế sẽ góp phần đưa Vinhomes Đông Anh nói riêng và thủ
+                đô Hà Nội nói chung có mặt trên bản đồ du lịch toàn cầu, nâng
+                tầm chất lượng du lịch MICE và giá trị bất động sản nơi đây.
+              </p>
+            </span>
+          </div>
+          <div class="">
+            <img
+              src="./image/detail/cate2.jpg"
+              alt="Khách sạn 5 sao JW Marriott"
+              class="mx-auto mb-4 border-4 border-white"
+            />
+            <span>
+              <h2 class="inline font-bold">Khách sạn 5 sao JW Marriott</h2>
+              <p class="inline">
+                – Điểm đến sang trọng dành cho giới thương lưu, doanh nhân và du
+                khách quốc tế sẽ góp phần đưa Vinhomes Đông Anh nói riêng và thủ
+                đô Hà Nội nói chung có mặt trên bản đồ du lịch toàn cầu, nâng
+                tầm chất lượng du lịch MICE và giá trị bất động sản nơi đây.
+              </p>
+            </span>
+          </div>
+          <div class="">
+            <img
+              src="./image/detail/cate3.jpg"
+              alt="Văn phòng hạng A"
+              class="mx-auto mb-4 border-4 border-white"
+            />
+            <span>
+              <h2 class="inline font-bold">Khách sạn 5 sao JW Marriott</h2>
+              <p class="inline">
+                – Điểm đến sang trọng dành cho giới thương lưu, doanh nhân và du
+                khách quốc tế sẽ góp phần đưa Vinhomes Đông Anh nói riêng và thủ
+                đô Hà Nội nói chung có mặt trên bản đồ du lịch toàn cầu, nâng
+                tầm chất lượng du lịch MICE và giá trị bất động sản nơi đây.
+              </p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-center p-8 md:flex-row fade-in"
+    >
+      <div class="max-w-lg p-8 border border-white">
+        <h1 class="px-12 mb-4 text-xl font-semibold text-center uppercase">
+          Không gian sinh thái đẳng cấp
+        </h1>
+        <p class="text-xs leading-relaxed">
+          Vinhomes Global Gate Đông Anh còn là một trong những đại đô thị sở hữu
+          không gian xanh lớn nhất trong chuỗi đô thị Vinhomes của tập đoàn, với
+          tổng diện tích cây xanh & mặt nước chiếm tới hơn 40 ha. Trong đó,
+          riêng hồ Thiên Nga trung tâm Vinhomes Đông Anh đã có diện tích rộng
+          lên tới 32 ha, rộng gấp 3 lần hồ Gươm và rộng hơn cả hồ Ngọc Trai 24.5
+          ha Vinhomes Ocean Park. Hồ Thiên Nga tựa như một lá phổi xanh, mang
+          đến không khí trong lành, mát mẻ, thoáng đãng cho cả khu đô thị, cũng
+          như là điểm vui chơi thư giãn vô cùng tuyệt vời dành cho cư dân nơi
+          đây.
+        </p>
+        <p class="mt-4 text-xs leading-relaxed">
+          Hơn 8 ha còn lại đến từ diện tích cây xanh nằm bên trong các khu công
+          viên nội khu đô thị. Dự án có khoảng 20 công viên lớn nhỏ nằm đan xen
+          bên trong 3 phân khu biệt thự liền kề & 13 tòa căn hộ/văn phòng. Các
+          khu công viên đều được thiết kế theo những chủ đề riêng biệt, mang đến
+          trải nghiệm đa dạng tới cho cư dân và du khách tham quan. Nổi bật
+          trong số đó phải kể đến: công viên Xứ Sở Thần Tiên rộng 5.6 ha mô
+          phỏng Disneyland – Califoria. Ngoài ra, còn có các công viên Swan
+          Park, Rose Park, Pearl Park, Boutique Park, Royal Park, Rainbow Park
+          vv… cũng gây ấn tượng mạnh mẽ không kém phần.
+        </p>
+      </div>
+      <div class="flex items-center justify-center mt-8 md:mt-0 md:ml-8">
+        <img
+          src="./image/detail/vinhomes-global-gate-banner.jpg"
+          alt="Aerial view of Vinhomes Global Gate with buildings, roads, and water bodies"
+          class="object-cover border-8 border-gray-200 rounded-full w-[400px] h-[400px]"
+        />
+      </div>
+    </div>
+
+    <div
+      class="flex items-center justify-center text-white slide-right"
+      style="background: linear-gradient(270deg, #236093 0%, #345574)"
+    >
+      <div class="w-full px-4 py-12 lg:max-w-5xl">
+        <h1
+          class="mb-8 text-2xl font-semibold text-center uppercase md:text-3xl"
+        >
+          Dịch vụ tiện ích “All in one”
+        </h1>
+        <p class="mb-12 text-sm">
+          Dẫn đầu xu hướng “Thành phố trong lòng thành phố“, những đại đô thị
+          rộng hàng trăm ha được tập đoàn Vingroup triển khai trong những năm
+          gần đây luôn được phát triển theo mô hình “All in one” và dự án
+          Vinhomes Cổ Loa Đông Anh cũng không ngoại lệ. Khu đô thị có đầy đủ
+          trung tâm thương mại Vincom Mega Mall, trường học Vinschool, Brighton
+          College, Vinstar, 20 công viên cây xanh kể trên, gần 10 khu bể bơi
+          ngoài trời mang phong cách “resort”, hàng trăm sân thể thao, sân chơi
+          trẻ nhỏ, sân tập dưỡng sinh lớn nhỏ, chuỗi thương mại dịch vụ sầm uất
+          và cả chuỗi cửa hàng/nhà hàng chất lượng đến từ chính 4.147 căn biệt
+          thự/nhà phố sẽ đáp ứng trọn vẹn mọi nhu cầu vui chơi, ăn uống, mua
+          sắm, học tập vv… của mỗi chủ nhân thượng lưu nơi đây.
+        </p>
+
+        <!-- Slider -->
+        <div
+          class="swiper w-[90%] lg:max-w-[1200px] h-[230px] md:h-[360px] relative"
+        >
+          <div class="swiper-wrapper">
+            <div class="flex items-center justify-center swiper-slide">
+              <img
+                src="./image/detail/cate1.jpg"
+                alt="Ảnh 1"
+                class="rounded-lg shadow-lg"
+              />
+            </div>
+            <div class="flex items-center justify-center swiper-slide">
+              <img
+                src="./image/detail/cate2.jpg"
+                alt="Ảnh 2"
+                class="rounded-lg shadow-lg"
+              />
+            </div>
+            <div class="flex items-center justify-center swiper-slide">
+              <img
+                \
+                src="./image/detail/cate3.jpg"
+                alt="Ảnh 3"
+                class="rounded-lg shadow-lg"
+              />
+            </div>
+            <div class="flex items-center justify-center swiper-slide">
+              <img
+                \
+                src="./image/detail/cate4.jpg"
+                alt="Ảnh 3"
+                class="rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          <!-- Nút điều hướng -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center slide-left">
+      <div class="w-full px-4 mt-10 lg:max-w-5xl">
+        <h1
+          class="mb-8 text-2xl font-semibold text-center uppercase md:text-3xl"
+        >
+          Chung cư Vinhomes Global Gate
+        </h1>
+        <p class="mb-12 text-sm">
+          Chung cư Vinhomes Global Gate Cổ Loa có tất cả 13 tòa, bao gồm 4 tòa
+          căn hộ và 9 tòa hỗn hợp căn hộ + văn phòng. Trong đó, Vingroup đã bán
+          lại 6 tòa cho Masterise Homes + 5 tòa cho MIK Group và chỉ giữ lại 2
+          tòa (Chưa biết bao giờ bán). 11 tòa chung cư của Masterise Homes & MIK
+          Group sẽ được xây dựng với hệ thống cảnh quan tiện ích & tiêu chuẩn
+          bàn giao căn hộ riêng biệt dựa theo định hướng phát triển của 2 tập
+          đoàn, độc lập hoàn toàn với Vingroup.
+        </p>
+      </div>
+
+      <img
+        src="./image/detail/vi-tri-chung-cu-vinhomes-global-gate.jpg"
+        alt=""
+        class="w-[100%]"
+      />
+    </div>
+
+    <div
+      class="py-8 text-white fade-in"
+      style="background: linear-gradient(270deg, #236093 0%, #345574 100%)"
+    >
+      <div class="flex flex-col justify-center p-8 md:flex-row">
+        <div class="md:pr-6 md:max-w-xs">
+          <h1 class="mb-4 text-xl font-semibold text-center uppercase">
+            Chung cư Masterise Homes
+          </h1>
+          <p class="text-xs leading-relaxed">
+            Masterise Homes được biết đến là đối tác chiến lược số 1 của tập
+            đoàn Vingroup, đã mua lại hàng loạt dự án lớn nhỏ, bao gồm 41 tòa
+            căn hộ Vinhomes Ocean Park 1 – 2 – 3, 7 tòa căn hộ Vinhomes Smart
+            City, 10 tòa căn hộ Vinhomes Grand Park vv… Tại dự án Vinhomes
+            Global Gate Cổ Loa Đông Anh, Masterise Homes đã mua lại 6 tòa nằm
+            dọc theo đường Trường Sa, trong đó có 2 tòa nằm ôm trọn hồ Thiên Nga
+            32 ha và 4 tòa nằm tại cửa ngõ phía Bắc khu đô thị. Hiện tại,
+            Masterise Homes đã cho ra mắt trước 2 tòa căn hộ Masteri Grand
+            Avenue với giá bán từ 100 – 110 Triệu/m2.
+          </p>
+        </div>
+        <div class="flex items-center justify-center mt-6 md:mt-0 md:ml-8">
+          <img
+            src="./image/detail/vinhomes-global-gate-banner.jpg"
+            alt="Aerial view of Vinhomes Global Gate with buildings, roads, and water bodies"
+            class="object-cover border-8 border-gray-200 w-[600px] h-[360px]"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center p-8 md:flex-row slide-right">
+        <div class="flex items-center justify-center mt-8 md:mt-0 md:mr-8">
+          <img
+            src="./image/detail/vinhomes-global-gate-banner.jpg"
+            alt="Aerial view of Vinhomes Global Gate with buildings, roads, and water bodies"
+            class="object-cover border-8 border-gray-200 w-[600px] h-[360px]"
+          />
+        </div>
+        <div class="pt-6 md:max-w-xs md:pl-6 md:pt-0">
+          <h1 class="mb-4 text-xl font-semibold text-center uppercase">
+            Chung cư Masterise Homes
+          </h1>
+          <p class="text-xs leading-relaxed">
+            Masterise Homes được biết đến là đối tác chiến lược số 1 của tập
+            đoàn Vingroup, đã mua lại hàng loạt dự án lớn nhỏ, bao gồm 41 tòa
+            căn hộ Vinhomes Ocean Park 1 – 2 – 3, 7 tòa căn hộ Vinhomes Smart
+            City, 10 tòa căn hộ Vinhomes Grand Park vv… Tại dự án Vinhomes
+            Global Gate Cổ Loa Đông Anh, Masterise Homes đã mua lại 6 tòa nằm
+            dọc theo đường Trường Sa, trong đó có 2 tòa nằm ôm trọn hồ Thiên Nga
+            32 ha và 4 tòa nằm tại cửa ngõ phía Bắc khu đô thị. Hiện tại,
+            Masterise Homes đã cho ra mắt trước 2 tòa căn hộ Masteri Grand
+            Avenue với giá bán từ 100 – 110 Triệu/m2.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center slide-left">
+      <div class="max-w-5xl mt-10">
+        <h1
+          class="mb-8 text-2xl font-semibold text-center uppercase md:text-3xl"
+        >
+          Biệt thự liền kề Vinhomes Global Gate
+        </h1>
+        <div class="flex flex-col px-4 text-xs leading-relaxed md:flex-row">
+          <div class="md:w-1/2">
+            Vinhomes Global Gate Đông Anh được phát triển với 3 phân khu biệt
+            thự liền kề: Tinh Anh, Thịnh Vượng, Cát Tường. Trong đó:
+            <ul class="pl-4 list-disc">
+              <li>
+                Phân khu Tinh Anh bao gồm 1.752 căn biệt thự đơn lập, song lập,
+                tam lập, tứ lập, liền kề, được xây dựng theo phong cách
+                Manhattan
+              </li>
+              <li>
+                Phân khu Thịnh Vượng bao gồm 847 căn biệt thự đơn lập, song lập,
+                liền kề, được xây dựng theo phong cách Châu Âu cổ điển
+              </li>
+              <li>
+                Phân khu Cát Tường bao gồm 1.548 căn liền kề được xây dựng theo
+                phong cách Đông Dương.
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-4 md:w-1/2 md:pt-0">
+            Cả 3 phân khu Tinh Hoa, Thịnh Vượng, Cát Tường đều là phân khu mở.
+            Sẽ không có barrier ngăn cách giữa các tuyến phố nội khu như các khu
+            đô thị cũ của Vinhomes và đặc biệt hơn: 100% biệt thự, liền kề tại
+            đây đều có thể kinh doanh buôn bán giống như shophouse, phù hợp với
+            lối sống truyền thống: “trên để ở – dưới buôn bán” của người dân
+            Việt. Đây cũng là điều tất yếu của một thành phố thương mại toàn cầu
+            – Nơi mọi công dân tinh anh đều có thể tự do thực hiện các ý tưởng
+            kinh doanh độc lạ cũng như tận hưởng cuộc sống chất lượng 2 trong 1.
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full px-4 md:justify-self-start md:pl-[16%] mt-10">
+        <!-- Danh sách nút -->
+        <div class="flex text-xs text-white list-tab-button">
+          <div
+            class="tab-button px-6 py-3 cursor-pointer border border-white active bg-[#345574]"
+            data-img="./image/detail/mat-bang-phan-khu-tinh-hoa-vinhomes-global-gate-1500x938.jpg"
+          >
+            Tinh Hoa
+          </div>
+          <div
+            class="tab-button px-6 py-3 cursor-pointer border border-white bg-[#345574]"
+            data-img="./image/detail/mat-bang-phan-khu-thinh-vuong-vinhomes-global-gate-2048x1280.jpg"
+          >
+            Thịnh Vượng
+          </div>
+          <div
+            class="tab-button px-6 py-3 cursor-pointer border border-white bg-[#345574]"
+            data-img="./image/detail/mat-bang-phan-khu-cat-tuong-vinhomes-global-gate-2048x1280.jpg"
+          >
+            Cát Tường
+          </div>
+        </div>
+
+        <!-- Ảnh hiển thị -->
+        <div class="p-2 border w-full md:w-[80%]">
+          <img
+            id="display-image"
+            src="./image/detail/mat-bang-phan-khu-tinh-hoa-vinhomes-global-gate-1500x938.jpg"
+            alt="Hiển thị ảnh"
+            class="w-full"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="py-8 text-white fade-in"
+      style="background: linear-gradient(270deg, #236093 0%, #345574 100%)"
+    >
+      <div class="flex flex-col justify-center p-8 md:flex-row">
+        <div class="w-full md:pr-6 md:max-w-xs">
+          <h1 class="mb-4 text-xl font-semibold text-center uppercase">
+            Biệt thự
+          </h1>
+          <p class="text-xs leading-relaxed">
+            Biệt thự Vinhomes Global Gate nằm tại 2 phân khu Tinh Hoa và Thịnh
+            Vượng, được chia thành 4 loại: đơn lập, song lập, tam lập, tứ lập,
+            diện tích đất từ 127.5 – 380.5 m2, mật độ xây dựng 50 – 65%, chiều
+            cao 4 tầng. Ưu điểm của biệt thự Vinhomes Cổ Loa nằm ở mật độ xây
+            dựng cao, nên diện tích xây dựng rộng trung bình 300 – 400 m2 (Có cả
+            căn diện tích xây dựng lên tới hơn 700 m2). Ngoài ra, hầu hết biệt
+            thự Vinhomes Cổ Loa đều nằm tại những vị trí đẹp bên trong khu đô
+            thị, đối diện là hồ Thiên Nga hoặc công viên nội khu. Với số lượng
+            giới hạn chỉ 296 căn, đây sẽ là dòng sản phẩm đắt giá chỉ dành cho
+            số ít những người “siêu giàu”. Hiện tại, giá bán biệt thự Vinhomes
+            Global Gate Cổ Loa nằm trong khoảng từ 40 – 200 tỷ.
+          </p>
+        </div>
+        <div class="flex items-center justify-center mt-8 md:mt-0 md:ml-8">
+          <img
+            src="./image/detail/vinhomes-global-gate-banner.jpg"
+            alt="Aerial view of Vinhomes Global Gate with buildings, roads, and water bodies"
+            class="object-cover border-8 border-gray-200 w-[600px] h-[360px]"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center p-8 md:flex-row">
+        <div class="flex items-center justify-center mt-8 md:mt-0 md:mr-8">
+          <img
+            src="./image/detail/vinhomes-global-gate-banner.jpg"
+            alt="Aerial view of Vinhomes Global Gate with buildings, roads, and water bodies"
+            class="object-cover border-8 border-gray-200 w-[600px] h-[360px]"
+          />
+        </div>
+        <div class="w-full mt-6 md:max-w-xs md:pl-6 md:pt-0">
+          <h1 class="mb-4 text-xl font-semibold text-center uppercase">
+            Chung cư Masterise Homes
+          </h1>
+          <p class="text-xs leading-relaxed">
+            Masterise Homes được biết đến là đối tác chiến lược số 1 của tập
+            đoàn Vingroup, đã mua lại hàng loạt dự án lớn nhỏ, bao gồm 41 tòa
+            căn hộ Vinhomes Ocean Park 1 – 2 – 3, 7 tòa căn hộ Vinhomes Smart
+            City, 10 tòa căn hộ Vinhomes Grand Park vv… Tại dự án Vinhomes
+            Global Gate Cổ Loa Đông Anh, Masterise Homes đã mua lại 6 tòa nằm
+            dọc theo đường Trường Sa, trong đó có 2 tòa nằm ôm trọn hồ Thiên Nga
+            32 ha và 4 tòa nằm tại cửa ngõ phía Bắc khu đô thị. Hiện tại,
+            Masterise Homes đã cho ra mắt trước 2 tòa căn hộ Masteri Grand
+            Avenue với giá bán từ 100 – 110 Triệu/m2.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="px-4 md:px-[100px] lg:px-[200px] xl:px-[250px] py-10 text-[#444444] slide-right"
+    >
+      <h1 class="mb-4 text-2xl font-semibold text-center uppercase">
+        GIÁ BÁN VINHOMES GLOBAL GATE CỔ LOA
+      </h1>
+      <div class="overflow-x-auto text-xs">
+        <table class="min-w-full border border-collapse border-gray-300">
+          <thead>
+            <tr class="bg-[#345574] text-white !font-base">
+              <th class="px-4 py-2 border border-gray-300">
+                Loại hình sản phẩm
+              </th>
+              <th class="px-4 py-2 border border-gray-300">Diện tích đất</th>
+              <th class="px-4 py-2 border border-gray-300">
+                Diện tích xây dựng
+              </th>
+              <th class="px-4 py-2 border border-gray-300">Mật độ xây dựng</th>
+              <th class="px-4 py-2 border border-gray-300">Chiều cao</th>
+              <th class="px-4 py-2 border border-gray-300">Giá bán</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">Liền kề thường</td>
+              <td class="px-4 py-2 border border-gray-300">62.5 – 100 m2</td>
+              <td class="px-4 py-2 border border-gray-300">250 – 388 m2</td>
+              <td class="px-4 py-2 border border-gray-300">84%</td>
+              <td class="px-4 py-2 border border-gray-300">5 tầng</td>
+              <td class="px-4 py-2 border border-gray-300">17 – 36 tỷ</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">Liền kề góc</td>
+              <td class="px-4 py-2 border border-gray-300">82.8 – 290 m2</td>
+              <td class="px-4 py-2 border border-gray-300">Đang cập nhật</td>
+              <td class="px-4 py-2 border border-gray-300">70 – 80%</td>
+              <td class="px-4 py-2 border border-gray-300">5 tầng</td>
+              <td class="px-4 py-2 border border-gray-300">28 – 80 tỷ</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">Biệt thự tứ lập</td>
+              <td class="px-4 py-2 border border-gray-300">127.5 m2</td>
+              <td class="px-4 py-2 border border-gray-300">313 m2</td>
+              <td class="px-4 py-2 border border-gray-300">65%</td>
+              <td class="px-4 py-2 border border-gray-300">4 tầng</td>
+              <td class="px-4 py-2 border border-gray-300">40 – 42 tỷ</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">Biệt thự tam lập</td>
+              <td class="px-4 py-2 border border-gray-300">127.5 m2</td>
+              <td class="px-4 py-2 border border-gray-300">313 m2</td>
+              <td class="px-4 py-2 border border-gray-300">65%</td>
+              <td class="px-4 py-2 border border-gray-300">4 tầng</td>
+              <td class="px-4 py-2 border border-gray-300">40 – 42 tỷ</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Biệt thự song lập
+              </td>
+              <td class="px-4 py-2 border border-gray-300">125.6 – 153 m2</td>
+              <td class="px-4 py-2 border border-gray-300">262 – 339 m2</td>
+              <td class="px-4 py-2 border border-gray-300">55 – 58%</td>
+              <td class="px-4 py-2 border border-gray-300">4 tầng</td>
+              <td class="px-4 py-2 border border-gray-300">50 – 62 tỷ</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">Biệt thự đơn lập</td>
+              <td class="px-4 py-2 border border-gray-300">212.5 – 380 m2</td>
+              <td class="px-4 py-2 border border-gray-300">409 – 766 m2</td>
+              <td class="px-4 py-2 border border-gray-300">50 – 52%</td>
+              <td class="px-4 py-2 border border-gray-300">4 tầng</td>
+              <td class="px-4 py-2 border border-gray-300">100 – 200 tỷ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4 text-sm text-gray-600">
+        <strong>Lưu ý:</strong> Bảng giá trên là <strong>giá FULL </strong>(Đã
+        bao gồm VAT + KPBT) và chưa trừ các chương trình chiết khấu/quà tặng của
+        chủ đầu tư
+      </p>
+    </div>
+
+    <div class="slide-left">
+      <!-- Thanh chọn chế độ thanh toán -->
+      <div
+        class="bg-[#345574] flex text-white justify-center items-center py-10 space-x-4 text-center cursor-pointer"
+      >
+        <div class="relative tab-item active" data-target="table-standard">
+          <div class="uppercase w-[100px] text-sm">Tiến độ chuẩn</div>
+          <span
+            class="arrow-icon w-[50px] h-[50px] bg-white block absolute bottom-[-225%] left-1/2 -translate-x-1/2 rotate-45"
+          ></span>
+        </div>
+        <div class="relative tab-item" data-target="table-full">
+          <div class="uppercase w-[100px] text-sm">Thanh toán sớm 100%</div>
+          <span
+            class="arrow-icon hidden w-[50px] h-[50px] bg-white block absolute bottom-[-225%] left-1/2 -translate-x-1/2 rotate-45"
+          ></span>
+        </div>
+        <div class="relative tab-item" data-target="table-bank">
+          <div class="uppercase w-[100px] text-sm">Vay vốn ngân hàng</div>
+          <span
+            class="arrow-icon hidden w-[50px] h-[50px] bg-white block absolute bottom-[-225%] left-1/2 -translate-x-1/2 rotate-45"
+          ></span>
+        </div>
+      </div>
+
+      <!-- Nội dung bảng thanh toán -->
+      <div
+        class="my-16 overflow-x-auto text-xs px-4 md:px-[100px] lg:px-[200px] xl:px-[250px]"
+      >
+        <!-- Bảng Tiến độ chuẩn -->
+        <table
+          id="table-standard"
+          class="min-w-full border border-collapse border-gray-300 payment-table"
+        >
+          <thead>
+            <tr class="bg-[#345574] text-white !font-base">
+              <th class="w-1/2 px-4 py-2 border border-gray-300">
+                Tiến độ thanh toán
+              </th>
+              <th class="w-1/2 px-4 py-2 border border-gray-300">
+                Số tiền thanh toán
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Ký thỏa thuận đặt cọc (TTĐC)
+              </td>
+              <td class="px-4 py-2 border border-gray-300">500 Triệu VND</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 1: Tại thời điểm ký hợp đồng mua bán (HĐMB)
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                20% giá bán (Đã bao gồm VAT & Tiền đặt cọc) + 5% giá bán (Chưa
+                bao gồm VAT)
+              </td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 2: Trong vòng 30 ngày kể từ thời điểm ký HĐMB
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                20% giá bán (Đã bao gồm VAT)
+              </td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 3: Trong vòng 60 ngày kể từ thời điểm ký HĐMB
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                30% giá bán (Đã bao gồm VAT)
+              </td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 4: Tại thời điểm thông báo bàn giao
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                25% giá bán (Đã bao gồm VAT) + VAT của 5% giá bán + Kinh phí bảo
+                trì
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Bảng Thanh toán sớm 100% -->
+        <table
+          id="table-full"
+          class="hidden min-w-full border border-collapse border-gray-300 payment-table"
+        >
+          <thead>
+            <tr class="bg-[#345574] text-white !font-base">
+              <th class="w-1/2 px-4 py-2 border border-gray-300">
+                Tiến độ thanh toán
+              </th>
+              <th class="w-1/2 px-4 py-2 border border-gray-300">
+                Số tiền thanh toán
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Ký thỏa thuận đặt cọc (TTĐC)
+              </td>
+              <td class="px-4 py-2 border border-gray-300">500 Triệu VND</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 1: Tại thời điểm ký hợp đồng mua bán (HĐMB)
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                20% giá bán (Đã bao gồm VAT & Tiền đặt cọc) + 5% giá bán (Chưa
+                bao gồm VAT)
+              </td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 2: Lần 2: Trong vòng 10 ngày kể từ thời điểm ký HĐMB
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                75% giá bán (Đã bao gồm VAT) + VAT của 5% giá bán
+              </td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 3: Tại thời điểm thông báo bàn giao
+              </td>
+              <td class="px-4 py-2 border border-gray-300">Kinh phí bảo trì</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Bảng Vay vốn ngân hàng -->
+        <table
+          id="table-bank"
+          class="hidden min-w-full border border-collapse border-gray-300 payment-table"
+        >
+          <thead>
+            <tr class="bg-[#345574] text-white !font-base">
+              <th class="w-1/3 px-4 py-2 border border-gray-300">
+                Tiến độ thanh toán
+              </th>
+              <th class="w-1/3 px-4 py-2 border border-gray-300">
+                Khách hàng thanh toán
+              </th>
+              <th class="w-1/3 px-4 py-2 border border-gray-300">
+                Ngân hàng giải ngân
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Ký thỏa thuận đặt cọc (TTĐC)
+              </td>
+              <td class="px-4 py-2 border border-gray-300">500 Triệu VND</td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 1: Tại thời điểm ký hợp đồng mua bán (HĐMB)
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                20% giá bán (Đã bao gồm VAT & Tiền đặt cọc) + 5% giá bán (Chưa
+                bao gồm VAT)
+              </td>
+              <td class="px-4 py-2 border border-gray-300"></td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 2: Trong vòng 10 ngày kể từ thời điểm ký HĐMB
+              </td>
+              <td class="px-4 py-2 border border-gray-300"></td>
+              <td class="px-4 py-2 border border-gray-300">
+                75% giá bán (Đã bao gồm VAT)
+              </td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 3: Trong vòng 30 ngày kể từ thời điểm ký HĐMB
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                5% giá bán (Đã bao gồm VAT)
+              </td>
+              <td class="px-4 py-2 border border-gray-300"></td>
+            </tr>
+            <tr class="even:bg-gray-100">
+              <td class="px-4 py-2 border border-gray-300">
+                Lần 4: Tại thời điểm thông báo bàn giao
+              </td>
+              <td class="px-4 py-2 border border-gray-300">
+                VAT của 5% giá bán + Kinh phí bảo trì
+              </td>
+              <td class="px-4 py-2 border border-gray-300"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div
+      class="relative min-h-[400px] bg-center bg-cover py-10 fade-in"
+      style="
+        background-image: url('./image/detail/vinhomes-ocean-park-background.jpg');
+      "
+    >
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div
+        class="relative z-10 flex flex-col items-center justify-center px-4 min-h-[400px]"
+      >
+        <h1 class="mb-6 text-2xl font-bold text-white">
+          ĐĂNG KÝ TƯ VẤN CHUYÊN SÂU DỰ ÁN
+        </h1>
+        <div>
+          <form class="w-full max-w-4xl">
+            <div class="flex flex-wrap mb-4 -mx-2">
+              <div class="w-full px-2 mb-4 md:w-1/4 md:mb-0">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="text"
+                  placeholder="Họ và tên*"
+                />
+              </div>
+              <div class="w-full px-2 mb-4 md:w-1/4 md:mb-0">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="text"
+                  placeholder="Số điện thoại*"
+                />
+              </div>
+              <div class="w-full px-2 mb-4 md:w-1/4 md:mb-0">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="w-full px-2 md:w-1/4">
+                <input
+                  class="w-full p-2 border border-gray-300 rounded"
+                  type="text"
+                  placeholder="Dự án quan tâm"
+                />
+              </div>
+            </div>
+            <div class="mb-4">
+              <textarea
+                class="w-full p-2 border border-gray-300 rounded"
+                rows="6"
+                placeholder="Nhu cầu quan tâm"
+              ></textarea>
+            </div>
+          </form>
+
+          <button class="px-6 py-2 text-white bg-[#345574] rounded">
+            ĐĂNG KÝ
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-[#FAF7F4] text-black font-plus overflow-hidden fade-in">
+      <footer class="px-4 py-10 mx-auto md:py-20 sm:px-6 md:container xl:px-20">
+        <div class="flex flex-col justify-between md:flex-row">
+          <div class="mb-8 md:mb-0">
+            <h2 class="flex items-center mb-4 text-lg font-bold">
+              <img
+                src="./image/icons/iconLogo.png"
+                alt="icon"
+                class="h-8 mr-4"
+              />
+              MinhTuanVinhomes
+            </h2>
+            <div class="flex mb-4 space-x-4">
+              <a href="#"
+                ><img src="./image/icons/instagram.svg" alt="icon"
+              /></a>
+              <a href="#"
+                ><img src="./image/icons/facebook.svg" alt="icon"
+              /></a>
+              <a href="#"
+                ><img src="./image/icons/linkedin.svg" alt="icon"
+              /></a>
+              <a href="#"><img src="./image/icons/youtube.svg" alt="icon" /></a>
+            </div>
+            <address class="mb-4 space-y-2 not-italic">
+              <p>123 Main Street, Hometown, USA</p>
+              <p>0789373568</p>
+              <p>minhtuanvinhomes@gmail.comp</p>
+            </address>
+            <p>© 2024 Minhtuanvinhomes. All rights reserved.</p>
+          </div>
+          <div class="flex flex-col md:w-[50%]">
+            <div>
+              <h3 class="mb-4 text-xl font-bold sm:text-3xl text-[#142A72]">
+                Xây dựng giấc mơ, giải pháp bất động sản
+              </h3>
+            </div>
+            <div class="flex flex-col justify-between sm:flex-row md:w-[70%]">
+              <div>
+                <ul class="space-y-4">
+                  <li>
+                    <a href="#" class="hover:underline">Trang chủ</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline">Về MinhTuanVinhomes</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline">Danh sách dự án</a>
+                  </li>
+                  <li><a href="#" class="hover:underline">Liên hệ</a></li>
+                </ul>
+              </div>
+              <div>
+                <ul class="mt-4 space-y-4 sm:mt-0">
+                  <li>
+                    <a href="#" class="hover:underline"
+                      >Lợi ích của khách hàng</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline">Văn phòng làm việc</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:underline">Dịch vụ</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+      function changeImage(element) {
+        const mainImage = document.getElementById("mainImage");
+        mainImage.src = element.getAttribute("data-src");
+      }
+    </script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".swiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 3, // Hiển thị 3 ảnh cùng lúc
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 100, // Cách nhau vừa phải
+          depth: 300, // Hiệu ứng 3D
+          modifier: 1,
+          slideShadows: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+          480: {
+            slidesPerView: 1.5,
+          },
+        },
+      });
+
+      // Kiểm tra kích thước màn hình
+      if (window.innerWidth < 768) {
+        swiperConfig.effect = "slide"; // Dưới md, dùng hiệu ứng trượt bình thường
+      } else {
+        swiperConfig.effect = "coverflow"; // Trên md, dùng hiệu ứng 3D
+      }
+
+      // Khởi tạo Swiper
+      var swiper = new Swiper(".swiper", swiperConfig);
+
+      // Lắng nghe sự thay đổi kích thước màn hình để cập nhật lại Swiper
+      window.addEventListener("resize", function () {
+        let newEffect = window.innerWidth < 768 ? "slide" : "coverflow";
+        if (swiper.params.effect !== newEffect) {
+          swiper.destroy(true, true);
+          swiperConfig.effect = newEffect;
+          swiper = new Swiper(".swiper", swiperConfig);
+        }
+      });
+    </script>
+
+    <script>
+      // Lấy tất cả nút
+      const buttons = document.querySelectorAll(".tab-button");
+      const image = document.getElementById("display-image");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Bỏ class active ở tất cả nút
+          buttons.forEach((btn) =>
+            btn.classList.remove("bg-[#00b3e3]", "active")
+          );
+          // Thêm class active vào nút đang click
+          button.classList.add("bg-[#00b3e3]", "active");
+
+          // Đổi ảnh theo data-img
+          image.src = button.getAttribute("data-img");
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".tab-item");
+        const tables = document.querySelectorAll(".payment-table");
+
+        function activateTab(index) {
+          // Remove active class from all tabs and hide all tables
+          tabs.forEach((tab, i) => {
+            tab.classList.toggle("active", i === index);
+            tab
+              .querySelector(".arrow-icon")
+              .classList.toggle("hidden", i !== index);
+          });
+
+          tables.forEach((table, i) => {
+            table.classList.toggle("hidden", i !== index);
+          });
+        }
+
+        // Add click event to each tab
+        tabs.forEach((tab, index) => {
+          tab.addEventListener("click", function () {
+            activateTab(index);
+          });
+        });
+
+        // Activate the first tab by default
+        activateTab(0);
+      });
+    </script>
+  </body>
+</html>
