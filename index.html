@@ -78,11 +78,48 @@
                     <div
                       class="w-[200px] px-2 py-2 bg-white rounded-lg shadow-lg"
                     >
-                      <a
-                        href="#"
-                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
-                        >Về chúng tôi</a
-                      >
+                      <div class="relative group/sub">
+                        <a
+                          href="#"
+                          class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+                          >Về chúng tôi
+                          <svg
+                            class="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9 5l7 7-7 7"
+                            /></svg
+                        ></a>
+                        <div
+                          class="absolute top-0 hidden pt-0 pl-2 left-full group-hover/sub:block"
+                        >
+                          <div
+                            class="px-2 py-2 bg-white rounded-lg shadow-lg min-w-[200px]"
+                          >
+                            <a
+                              href="#"
+                              class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                              >Lịch sử</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                              >Thành tựu</a
+                            >
+                            <a
+                              href="#"
+                              class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                              >Giá trị cốt lõi</a
+                            >
+                          </div>
+                        </div>
+                      </div>
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
@@ -886,28 +923,40 @@
 
     <script src="./script.js"></script>
     <script>
-      // Toggle mobile submenu
+      // Toggle submenu function updated for nested menus
       function toggleSubmenu(id) {
         const submenu = document.getElementById(id);
-        const allSubmenus = document.querySelectorAll('[id$="Submenu"]');
         const currentButton = event.currentTarget;
         const arrow = currentButton.querySelector("svg");
 
-        // Close other submenus
-        allSubmenus.forEach((menu) => {
-          if (menu.id !== id && !menu.classList.contains("hidden")) {
-            menu.classList.add("hidden");
-            const otherButton = menu.previousElementSibling;
-            const otherArrow = otherButton.querySelector("svg");
-            otherArrow.style.transform = "rotate(0deg)";
+        // If clicking a third level menu, don't close siblings
+        const isThirdLevel = currentButton
+          .closest("ul")
+          .classList.contains("pl-4");
+        if (!isThirdLevel) {
+          // Close sibling menus only if not third level
+          const parentUl = currentButton.closest("ul");
+          const siblingLis = parentUl.children;
+          for (let li of siblingLis) {
+            const siblingSubmenu = li.querySelector("ul");
+            const siblingButton = li.querySelector("button");
+            if (siblingSubmenu && siblingSubmenu.id !== id) {
+              siblingSubmenu.classList.add("hidden");
+              if (siblingButton) {
+                const siblingArrow = siblingButton.querySelector("svg");
+                if (siblingArrow) siblingArrow.style.transform = "rotate(0deg)";
+              }
+            }
           }
-        });
+        }
 
         // Toggle current submenu
         submenu.classList.toggle("hidden");
-        arrow.style.transform = submenu.classList.contains("hidden")
-          ? "rotate(0deg)"
-          : "rotate(180deg)";
+        if (arrow) {
+          arrow.style.transform = submenu.classList.contains("hidden")
+            ? "rotate(0deg)"
+            : "rotate(180deg)";
+        }
       }
 
       // Mobile menu toggle
