@@ -42,9 +42,7 @@
                 src="./image//index/logoWeb.png"
                 width="30"
               />
-              <span class="text-lg font-bold text-white">
-                MinhTuanVinhomes
-              </span>
+              <span class="text-lg font-bold text-white">MinhTuanVinhomes</span>
             </a>
             <div
               class="items-center hidden space-x-2 lg:flex md:property-button lg:space-x-6 xl:space-x-16"
@@ -52,10 +50,132 @@
               <nav
                 class="flex space-x-2 text-white nav-sectionpage lg:space-x-6 xl:space-x-16"
               >
-                <a href="index.html" class="active">Trang chủ</a>
-                <a href="#">Giới thiệu</a>
-                <a href="list-project.html">Danh sách dự án</a>
-                <a href="news.html">Vinhomes</a>
+                <!-- Main menu items with submenu -->
+                <div class="relative group">
+                  <a href="index.html" class="flex items-center active">
+                    Trang chủ
+                  </a>
+                </div>
+
+                <div class="relative group">
+                  <a href="#" class="flex items-center">
+                    Giới thiệu
+                    <svg
+                      class="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </a>
+                  <div class="absolute left-0 hidden pt-2 group-hover:block">
+                    <div
+                      class="w-[200px] px-2 py-2 bg-white rounded-lg shadow-lg"
+                    >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Về chúng tôi</a
+                      >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Tầm nhìn & Sứ mệnh</a
+                      >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Đội ngũ</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="relative group">
+                  <a href="list-project.html" class="flex items-center">
+                    Danh sách dự án
+                    <svg
+                      class="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </a>
+                  <div class="absolute left-0 hidden pt-2 group-hover:block">
+                    <div
+                      class="w-[200px] px-2 py-2 bg-white rounded-lg shadow-lg"
+                    >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Dự án mới</a
+                      >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Đang triển khai</a
+                      >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Đã hoàn thành</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="relative group">
+                  <a href="news.html" class="flex items-center">
+                    Vinhomes
+                    <svg
+                      class="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </a>
+                  <div class="absolute left-0 hidden pt-2 group-hover:block">
+                    <div
+                      class="w-[200px] px-2 py-2 bg-white rounded-lg shadow-lg"
+                    >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Tin tức</a
+                      >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Cập nhật</a
+                      >
+                      <a
+                        href="#"
+                        class="block px-4 py-2 text-sm !text-gray-700 hover:bg-gray-100"
+                        >Sự kiện</a
+                      >
+                    </div>
+                  </div>
+                </div>
               </nav>
 
               <a
@@ -65,7 +185,8 @@
                 Liên hệ tư vấn
               </a>
             </div>
-            <!-- Nút Dashboard để hiển thị thanh Nav -->
+
+            <!-- Mobile menu button -->
             <div class="flex lg:hidden">
               <button id="dashboardButton" class="text-white">
                 <i class="fas fa-bars"></i>
@@ -74,148 +195,175 @@
           </div>
         </header>
 
-        <!-- Thanh Nav dọc (ẩn trên màn nhỏ) -->
+        <!-- Mobile side navigation -->
         <div
           id="sideNav"
-          class="fixed top-0 right-0 w-64 h-full transition-transform duration-300 transform translate-x-full"
+          class="fixed top-0 right-0 w-64 h-full overflow-y-auto transition-transform duration-300 transform translate-x-full bg-white"
         >
           <div class="p-6">
-            <ul class="flex flex-col space-y-4">
-              <a href="#" class="active">Trang chủ</a>
-              <a href="#">Giới thiệu</a>
-              <a href="#">Danh sách dự án</a>
-              <a href="#">Vinhomes</a>
-              <a href="#">Liên hệ tư vấn</a>
+            <ul class="space-y-2">
+              <!-- Mobile menu items with submenu -->
+              <li class="py-2">
+                <button
+                  class="flex items-center justify-between w-full text-gray-600 hover:text-gray-900"
+                  onclick="toggleSubmenu('homeSubmenu')"
+                >
+                  <span>Trang chủ</span>
+                </button>
+              </li>
+
+              <li class="py-2">
+                <button
+                  class="flex items-center justify-between w-full text-gray-600 hover:text-gray-900"
+                  onclick="toggleSubmenu('aboutSubmenu')"
+                >
+                  <span>Giới thiệu</span>
+                  <svg
+                    class="w-4 h-4 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <ul id="aboutSubmenu" class="hidden pl-4 mt-2 space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Về chúng tôi</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Tầm nhìn & Sứ mệnh</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Đội ngũ</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="py-2">
+                <button
+                  class="flex items-center justify-between w-full text-gray-600 hover:text-gray-900"
+                  onclick="toggleSubmenu('projectSubmenu')"
+                >
+                  <span>Danh sách dự án</span>
+                  <svg
+                    class="w-4 h-4 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <ul id="projectSubmenu" class="hidden pl-4 mt-2 space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Dự án mới</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Đang triển khai</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Đã hoàn thành</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="py-2">
+                <button
+                  class="flex items-center justify-between w-full text-gray-600 hover:text-gray-900"
+                  onclick="toggleSubmenu('vinhomesSubmenu')"
+                >
+                  <span>Vinhomes</span>
+                  <svg
+                    class="w-4 h-4 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <ul id="vinhomesSubmenu" class="hidden pl-4 mt-2 space-y-2">
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Tin tức</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Cập nhật</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="block py-2 text-sm text-gray-500 hover:text-gray-900"
+                      >Sự kiện</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li class="pt-4">
+                <a
+                  href="contact.html"
+                  class="block px-4 py-2 text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                >
+                  Liên hệ tư vấn
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <!-- Mờ vùng ngoài khi thanh Nav dọc mở -->
+        <!-- Overlay for mobile menu -->
         <div
           id="overlay"
           class="fixed inset-0 hidden bg-black opacity-50"
         ></div>
-      </div>
-      <!-- Nội dung chính -->
-      <div class="absolute bottom-[-22%] z-10 w-full">
-        <div
-          class="flex flex-col items-center justify-center px-4 py-20 text-center text-white"
-        >
-          <div class="w-full max-w-4xl">
-            <div class="flex font-plus">
-              <button
-                id="realEstateSaleButton"
-                class="py-2 mr-2 text-gray-600 transition-transform duration-300 ease-in-out bg-white rounded-t-lg active x-2 sm:px-8 property-button active:scale-95 hover:bg-gray-100 hover:shadow-md"
-              >
-                Nhà đất bán
-              </button>
-              <button
-                id="realEstateRentButton"
-                class="px-2 py-2 mr-2 text-gray-600 transition-transform duration-300 ease-in-out bg-white rounded-t-lg sm:px-8 property-button hover:bg-gray-100 hover:shadow-md active:scale-95"
-              >
-                Nhà đất thuê
-              </button>
-              <button
-                id="projectsButton"
-                class="px-2 py-2 text-gray-600 transition-transform duration-300 ease-in-out bg-white rounded-t-lg sm:px-8 property-button hover:bg-gray-100 hover:shadow-md active:scale-95"
-              >
-                Dự án
-              </button>
-            </div>
-
-            <div
-              class="w-full max-w-4xl p-2 bg-white rounded-lg rounded-tl-none shadow-lg sm:p-6"
-            >
-              <div
-                class="flex flex-col items-center justify-between pb-4 border-b font-roboto md:flex-row"
-              >
-                <div class="flex md:w-[80%] mb-4 md:mb-0">
-                  <div class="flex items-center md:w-[30%] p-2 text-gray-600">
-                    <img
-                      alt="Logo"
-                      src="./image/icons/iconHome.png"
-                      width="16"
-                    />
-                    <select
-                      id="projectSelect"
-                      class="w-full ml-4 bg-transparent cursor-pointer focus:outline-none"
-                    >
-                      <option value="default" selected>Dự án</option>
-                      <option value="nha-ban">Nhà bán</option>
-                      <option value="nha-thue">Nhà thuê</option>
-                      <option value="khac">Khác</option>
-                    </select>
-                  </div>
-                  <div class="w-[0.5px] h-10 bg-[#DFDFDF] mx-4"></div>
-                  <div class="flex items-center p-2 w-[60%] text-black">
-                    <img
-                      alt="Logo"
-                      src="./image/icons/iconSearch.png"
-                      width="16"
-                      class="mr-2"
-                    />
-                    <input
-                      id="searchInput"
-                      class="w-full bg-transparent focus:outline-none"
-                      placeholder="Tìm kiếm dự án"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <button
-                  id="searchButton"
-                  class="px-12 py-2 text-white rounded-lg bg-gradient-to-r from-[#182c77] to-[#6274bb] hover:from-[#6274bb] hover:to-[#182c77] active:scale-95 focus:ring-4 focus:ring-[#6274bb]/50 transition-transform duration-300 ease-in-out"
-                >
-                  Tìm kiếm
-                </button>
-              </div>
-              <div
-                class="flex flex-col items-center justify-between mt-2 space-y-4 text-gray-600 font-roboto md:flex-row md:space-y-0 md:space-x-4"
-              >
-                <div class="flex items-center w-full p-2 md:w-auto">
-                  <span class="mr-2 text-gray-500"> Bộ lọc tìm kiếm </span>
-                </div>
-                <div
-                  class="flex pace-x-0 sm:space-x-2 md:space-x-6 md:w-[60%] justify-end"
-                >
-                  <div class="flex items-center w-full p-2 md:w-[24%]">
-                    <select
-                      id="typeSelect"
-                      class="w-full bg-transparent cursor-pointer focus:outline-none"
-                    >
-                      <option value="default" selected>Loại hình</option>
-                      <option value="nha-ban">Nhà bán</option>
-                      <option value="nha-thue">Nhà thuê</option>
-                      <option value="can-ho">Căn hộ</option>
-                    </select>
-                  </div>
-                  <div class="flex items-center w-full p-2 md:w-[24%]">
-                    <select
-                      id="priceSelect"
-                      class="bg-transparent cursor-pointer focus:outline-none"
-                    >
-                      <option value="default" selected>Khoảng giá</option>
-                      <option value="duoi-1-ty">Dưới 1 tỷ</option>
-                      <option value="1-2-ty">1 - 2 tỷ</option>
-                      <option value="tren-2-ty">Trên 2 tỷ</option>
-                    </select>
-                  </div>
-                  <div class="flex items-center w-full p-2 md:w-[24%]">
-                    <select
-                      id="sizeSelect"
-                      class="bg-transparent cursor-pointer focus:outline-none"
-                    >
-                      <option value="default" selected>Diện tích</option>
-                      <option value="duoi-50m2">Dưới 50m²</option>
-                      <option value="50-100m2">50 - 100m²</option>
-                      <option value="tren-100m2">Trên 100m²</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -737,5 +885,52 @@
     </div>
 
     <script src="./script.js"></script>
+    <script>
+      // Toggle mobile submenu
+      function toggleSubmenu(id) {
+        const submenu = document.getElementById(id);
+        const allSubmenus = document.querySelectorAll('[id$="Submenu"]');
+        const currentButton = event.currentTarget;
+        const arrow = currentButton.querySelector("svg");
+
+        // Close other submenus
+        allSubmenus.forEach((menu) => {
+          if (menu.id !== id && !menu.classList.contains("hidden")) {
+            menu.classList.add("hidden");
+            const otherButton = menu.previousElementSibling;
+            const otherArrow = otherButton.querySelector("svg");
+            otherArrow.style.transform = "rotate(0deg)";
+          }
+        });
+
+        // Toggle current submenu
+        submenu.classList.toggle("hidden");
+        arrow.style.transform = submenu.classList.contains("hidden")
+          ? "rotate(0deg)"
+          : "rotate(180deg)";
+      }
+
+      // Mobile menu toggle
+      document
+        .getElementById("dashboardButton")
+        .addEventListener("click", function () {
+          document
+            .getElementById("sideNav")
+            .classList.remove("translate-x-full");
+          document.getElementById("overlay").classList.remove("hidden");
+        });
+
+      document
+        .getElementById("closeSideNav")
+        .addEventListener("click", function () {
+          document.getElementById("sideNav").classList.add("translate-x-full");
+          document.getElementById("overlay").classList.add("hidden");
+        });
+
+      document.getElementById("overlay").addEventListener("click", function () {
+        document.getElementById("sideNav").classList.add("translate-x-full");
+        document.getElementById("overlay").classList.add("hidden");
+      });
+    </script>
   </body>
 </html>
